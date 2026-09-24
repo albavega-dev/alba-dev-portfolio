@@ -7,6 +7,7 @@ import Contact from './pages/contact/Contact'
 import Projects from './pages/projects/Projects'
 import UILab from './pages/ui-lab/UILab'
 import Experience from './pages/experience/Experience'
+import CV from './pages/cv/CV'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/ui-lab" element={<UILab />} />
         <Route path="/experience" element={<Experience />} />
+        <Route path="/cv" element={<CV />} />
       </Routes>
 
       <Footer />
