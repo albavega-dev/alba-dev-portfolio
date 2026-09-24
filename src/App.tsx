@@ -1,14 +1,12 @@
-import { BrowserRouter, Link, Route, Routes } from 'react-router'
+import { BrowserRouter, Route, Routes } from 'react-router'
 import About from './pages/about/About'
 import Home from './pages/home/Home'
+import Navbar from './components/layout/Navbar'
 
 function App() {
   return (
     <BrowserRouter>
-      <nav className="flex gap-4 p-6">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-      </nav>
+      <Navbar />
 
       <Routes>
         <Route path="/" element={<Home />} />
