@@ -1,9 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap');
+
 @import "tailwindcss";
 
 :root {
-  font-family: Inter, system-ui, sans-serif;
-  color: #1f2937;
-  background-color: #f8fafc;
+  font-family: 'Inter', system-ui, sans-serif;
+
+  color: #38313d;
+  background-color: #fff9fc;
+
+  --color-background: #fff9fc;
+  --color-surface: #ffffff;
+
+  --color-pink-soft: #f3d6e5;
+  --color-pink: #dfa6c3;
+
+  --color-lavender-soft: #e5ddf4;
+  --color-lavender: #b9a5d6;
+
+  --color-purple: #695477;
+
+  --color-text: #38313d;
+  --color-text-secondary: #756b78;
+  --color-border: #e8dfea;
 }
 
 html {
@@ -14,4 +32,12 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: 'Fraunces', Georgia, serif;
 }
