@@ -2,7 +2,7 @@ import { Link } from 'react-router'
 
 function Navbar() {
   return (
-    <nav className="flex gap-6 p-6">
+    <nav className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 p-6 text-sm md:gap-6 md:text-base">
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
       <Link to="/experience">Experience</Link>

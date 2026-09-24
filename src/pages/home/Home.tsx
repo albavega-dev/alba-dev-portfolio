@@ -1,13 +1,10 @@
 import PageContainer from '../../components/layout/PageContainer'
-import SectionTitle from '../../components/ui/SectionTitle'
+import Hero from '../../components/home/Hero'
 
 function Home() {
   return (
     <PageContainer>
-      <SectionTitle
-        title="Alba Vega"
-        description="Full-Stack Developer with a strong frontend focus, specialised in Angular."
-      />
+      <Hero />
     </PageContainer>
   )
 }
