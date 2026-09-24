@@ -41,3 +41,47 @@ h3,
 h4 {
   font-family: 'Fraunces', Georgia, serif;
 }
+
+@keyframes feather-fall {
+  0% {
+    transform: translate3d(18vw, -65vh, 0) rotate(-24deg);
+    opacity: 0.8;
+  }
+
+  3% {
+    transform: translate3d(10vw, -52vh, 0) rotate(-18deg);
+  }
+
+  12% {
+    transform: translate3d(-12vw, -38vh, 0) rotate(10deg);
+  }
+
+  40% {
+    transform: translate3d(14vw, -22vh, 0) rotate(-18deg);
+  }
+
+  62% {
+    transform: translate3d(-8vw, -12vh, 0) rotate(9deg);
+  }
+
+  80% {
+    transform: translate3d(7vw, -5vh, 0) rotate(-15deg);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotate(-30deg);
+    opacity: 0.8;
+  }
+}
+
+.feather-fall {
+  animation: feather-fall 10s ease-in-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feather-fall {
+    animation: none;
+    opacity: 0.8;
+    transform: rotate(-12deg);
+  }
+}
