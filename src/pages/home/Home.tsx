@@ -1,12 +1,10 @@
 import PageContainer from '../../components/layout/PageContainer'
+import Hero from '../../components/home/Hero'
 
 function Home() {
   return (
     <PageContainer>
-      <h1 className="text-4xl font-bold">Alba Dev Portfolio</h1>
-      <p className="mt-4 text-lg">
-        Full-Stack Developer · Frontend-focused
-      </p>
+      <Hero />
     </PageContainer>
   )
 }

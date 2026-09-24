@@ -6,12 +6,12 @@ type SectionTitleProps = {
 function SectionTitle({ title, description }: SectionTitleProps) {
   return (
     <header>
-      <h1 className="text-4xl font-bold tracking-tight">
+      <h1 className="text-4xl font-semibold tracking-tight text-[var(--color-purple)] md:text-5xl">
         {title}
       </h1>
-
+    
       {description && (
-        <p className="mt-3 max-w-2xl text-lg text-gray-600">
+        <p className="mt-4 text-lg text-[var(--color-text-secondary)]">
           {description}
         </p>
       )}

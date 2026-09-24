@@ -10,12 +10,12 @@ function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    'inline-flex items-center justify-center rounded-lg px-5 py-2.5 text-sm font-medium transition-colors'
+    'inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-medium transition-colors'
 
   const variantStyles =
     variant === 'primary'
-      ? 'bg-gray-900 text-white hover:bg-gray-700'
-      : 'border border-gray-300 bg-white text-gray-900 hover:bg-gray-100'
+      ? 'bg-[var(--color-purple)] text-white hover:bg-[var(--color-lavender)]'
+      : 'border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-purple)] hover:bg-[var(--color-lavender-soft)]'
 
   return (
     <button
