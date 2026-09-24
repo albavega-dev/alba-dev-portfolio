@@ -5,6 +5,7 @@ import Navbar from './components/layout/Navbar'
 import Footer from './components/layout/Footer'
 import Contact from './pages/contact/Contact'
 import Projects from './pages/projects/Projects'
+import UILab from './pages/ui-lab/UILab'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/ui-lab" element={<UILab />} />
       </Routes>
 
       <Footer />
