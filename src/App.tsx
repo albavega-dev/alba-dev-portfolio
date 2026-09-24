@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer'
 import Contact from './pages/contact/Contact'
 import Projects from './pages/projects/Projects'
 import UILab from './pages/ui-lab/UILab'
+import Experience from './pages/experience/Experience'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/ui-lab" element={<UILab />} />
+        <Route path="/experience" element={<Experience />} />
       </Routes>
 
       <Footer />
