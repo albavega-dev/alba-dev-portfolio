@@ -1,11 +1,13 @@
+import PageContainer from '../../components/layout/PageContainer'
+
 function Experience() {
   return (
-    <main className="min-h-screen p-8">
+    <PageContainer>
       <h1 className="text-4xl font-bold">Experience</h1>
       <p className="mt-4 text-lg">
         My professional experience and career journey.
       </p>
-    </main>
+    </PageContainer>
   )
 }
 
