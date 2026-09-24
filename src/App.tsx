@@ -1,12 +1,6 @@
 import { BrowserRouter, Link, Route, Routes } from 'react-router'
-
-function Home() {
-  return <h1 className="text-4xl font-bold">Home</h1>
-}
-
-function About() {
-  return <h1 className="text-4xl font-bold">About</h1>
-}
+import About from './pages/about/About'
+import Home from './pages/home/Home'
 
 function App() {
   return (
@@ -16,12 +10,10 @@ function App() {
         <Link to="/about">About</Link>
       </nav>
 
-      <main className="p-6">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-        </Routes>
-      </main>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+      </Routes>
     </BrowserRouter>
   )
 }
