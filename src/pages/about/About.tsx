@@ -2,6 +2,7 @@
 import PageContainer from '../../components/layout/PageContainer'
 import SectionTitle from '../../components/ui/SectionTitle'
 import SkillIcon from '../../components/ui/SkillIcon'
+import BeyondTheCode from '../../components/about/BeyondTheCode'
 
 function About() {
   return (
@@ -11,6 +12,10 @@ function About() {
           title="About Me"
           description="A little about who I am, how I work, and what I enjoy building."
         />
+
+        {/* =========================================
+            WHO I AM
+        ========================================= */}
 
         <section className="mt-12 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div className="max-w-3xl">
@@ -31,6 +36,8 @@ function About() {
             </p>
           </div>
 
+          {/* Animated Polaroid */}
+
           <div className="flex justify-center py-6 md:justify-end">
             <div className="polaroid-photo relative w-64 rotate-[3deg] bg-white p-3 pb-10 shadow-[4px_6px_18px_rgba(185,165,214,0.25)] sm:w-72 lg:w-80">
 
@@ -41,6 +48,7 @@ function About() {
               />
 
               {/* Washi tape */}
+
               <div
                 aria-hidden="true"
                 className="polaroid-tape pointer-events-none absolute -top-4 left-1/2 z-10 h-8 w-28"
@@ -55,10 +63,13 @@ function About() {
                   }}
                 />
               </div>
-
             </div>
           </div>
         </section>
+
+        {/* =========================================
+            WHAT I WORK WITH
+        ========================================= */}
 
         <section className="mt-20">
           <h2 className="text-2xl font-semibold text-[var(--color-purple)]">
@@ -216,9 +227,14 @@ function About() {
                 </div>
               </div>
             </div>
-
           </div>
         </section>
+
+        {/* =========================================
+                BEYOND THE CODE
+        ========================================= */}
+
+        <BeyondTheCode />
       </div>
     </PageContainer>
   )

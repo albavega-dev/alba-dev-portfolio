@@ -1,0 +1,724 @@
+
+/* =========================================
+   JOURNAL STAGE
+========================================= */
+
+.journal-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  padding: 2rem 0;
+}
+
+/* =========================================
+   JOURNAL STRUCTURE
+========================================= */
+
+.journal {
+  position: relative;
+
+  width: min(100%, 1000px);
+  height: 540px;
+
+  /*
+   * When closed, only the right half of
+   * the journal is visible.
+   *
+   * Moving the whole journal 25% to the
+   * left centers the closed cover.
+   */
+
+  transform: translateX(-25%);
+
+  transition:
+    transform 1000ms cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.journal--open {
+  transform: translateX(0);
+}
+
+.journal-book {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  perspective: 2000px;
+  transform-style: preserve-3d;
+}
+
+/* =========================================
+   PAPER
+========================================= */
+
+.journal-paper {
+  background-color: #fffaf3;
+
+  background-image:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 31px,
+      rgba(202, 174, 184, 0.15) 32px
+    );
+
+  border: 1px solid #e8d9cd;
+}
+
+/* =========================================
+   RIGHT PAGE
+========================================= */
+
+.journal-right-page {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 50%;
+  height: 100%;
+
+  padding: 2.5rem;
+
+  border-radius: 3px 12px 12px 3px;
+
+  box-shadow:
+    6px 10px 24px rgba(100, 70, 90, 0.13),
+    inset 14px 0 18px -15px rgba(90, 60, 80, 0.2);
+}
+
+/* =========================================
+   TURNING SHEETS
+========================================= */
+
+.journal-turning-page {
+  position: absolute;
+
+  top: 0;
+  left: 50%;
+
+  width: 50%;
+  height: 100%;
+
+  transform-origin: left center;
+  transform-style: preserve-3d;
+
+  transform: rotateY(0deg);
+
+  transition:
+    transform 1000ms cubic-bezier(0.45, 0, 0.2, 1);
+}
+
+.journal-turning-page--turned {
+  transform: rotateY(-180deg);
+}
+
+/* =========================================
+   PAGE FACES
+========================================= */
+
+.journal-face {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.journal-face--front {
+  transform: rotateY(0deg);
+}
+
+.journal-face--back {
+  transform: rotateY(180deg);
+}
+
+.journal-face--front.journal-paper {
+  padding: 2.5rem;
+
+  border-radius: 3px 12px 12px 3px;
+
+  box-shadow:
+    6px 10px 24px rgba(100, 70, 90, 0.10),
+    inset 14px 0 18px -15px rgba(90, 60, 80, 0.2);
+}
+
+.journal-face--back.journal-paper {
+  padding: 2.5rem;
+
+  border-radius: 12px 3px 3px 12px;
+
+  box-shadow:
+    -6px 10px 24px rgba(100, 70, 90, 0.10),
+    inset -14px 0 18px -15px rgba(90, 60, 80, 0.2);
+}
+
+/* =========================================
+   FRONT COVER
+========================================= */
+
+.journal-cover {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1.5rem;
+
+  background: #e7b9d0;
+
+  border: 1px solid #c78dae;
+  border-radius: 5px 12px 12px 5px;
+
+  box-shadow:
+    3px 6px 14px rgba(100, 70, 90, 0.16),
+    0 10px 24px rgba(100, 70, 90, 0.10);
+
+  color: #754d70;
+
+  cursor: pointer;
+}
+
+.journal-cover:disabled {
+  cursor: default;
+}
+
+/* =========================================
+   JOURNAL SPINE
+========================================= */
+
+.journal-spine {
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  left: 0;
+
+  width: 16px;
+
+  background: linear-gradient(
+    90deg,
+    #b57b9a 0%,
+    #c991af 25%,
+    #dcaac4 55%,
+    #c58eab 85%,
+    #b57b9a 100%
+  );
+
+  border-right: 1px solid rgba(117, 77, 112, 0.25);
+
+  box-shadow:
+    inset 2px 0 3px rgba(117, 77, 112, 0.15),
+    2px 0 4px rgba(117, 77, 112, 0.12);
+
+  border-radius: 5px 0 0 5px;
+
+  pointer-events: none;
+}
+
+.journal-spine::after {
+  content: '';
+
+  position: absolute;
+
+  top: 0;
+  bottom: 0;
+  right: -3px;
+
+  width: 3px;
+
+  background: linear-gradient(
+    90deg,
+    rgba(117, 77, 112, 0.15),
+    rgba(255, 255, 255, 0.15)
+  );
+}
+
+/* =========================================
+   COVER DECORATION
+========================================= */
+
+.journal-cover-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1.5rem;
+
+  width: calc(100% - 16px);
+  height: 100%;
+
+  margin-left: 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 3px 8px 8px 3px;
+}
+
+.journal-cover-decoration {
+  font-size: 1.5rem;
+  color: #fff4fa;
+}
+
+.journal-cover-title {
+  font-family: Georgia, serif;
+
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+
+  line-height: 1.2;
+  text-align: center;
+}
+
+.journal-cover-subtitle {
+  font-size: 0.85rem;
+  font-style: italic;
+
+  letter-spacing: 0.08em;
+}
+
+/* =========================================
+   PAGE CONTENT
+========================================= */
+
+.journal-page-content {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+}
+
+.journal-page-number {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+
+  color: #b77e9b;
+}
+
+.journal-page-title {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+
+  font-size: 1.5rem;
+  font-weight: 600;
+
+  color: #a86a91;
+}
+
+/* =========================================
+   ABOUT ME
+========================================= */
+
+.journal-writing {
+  display: flex;
+  flex-direction: column;
+
+  gap: 1.25rem;
+
+  font-size: 0.95rem;
+  line-height: 2;
+
+  color: #65576b;
+}
+
+.journal-signature {
+  margin-top: auto;
+  align-self: flex-end;
+
+  font-size: 1.5rem;
+  color: #c77c9f;
+}
+
+/* =========================================
+   THINGS I LOVE - INTRODUCTION
+========================================= */
+
+.journal-page-content--intro {
+  align-items: center;
+  text-align: center;
+}
+
+.journal-page-content--intro .journal-page-title {
+  margin-top: 3rem;
+  margin-bottom: 1rem;
+
+  font-family: Georgia, serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.journal-intro-decoration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  font-size: 2rem;
+  color: #c77c9f;
+}
+
+.journal-intro-decoration span:nth-child(2) {
+  font-size: 3rem;
+}
+
+.journal-intro-description {
+  max-width: 260px;
+  margin-top: 1.5rem;
+
+  font-size: 0.95rem;
+  line-height: 1.8;
+
+  color: #80628a;
+}
+
+.journal-intro-footer {
+  margin-top: auto;
+
+  font-size: 0.8rem;
+  font-style: italic;
+
+  color: #b77e9b;
+}
+
+/* =========================================
+   INDIVIDUAL INTEREST PAGES
+========================================= */
+
+.journal-interest {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  gap: 2rem;
+
+  text-align: center;
+}
+
+.journal-interest-illustration {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 130px;
+  height: 130px;
+
+  background: #f8eaf0;
+
+  border: 1px dashed #e8b7cd;
+  border-radius: 50%;
+
+  font-size: 3rem;
+
+  transform: rotate(-3deg);
+}
+
+.journal-interest-description {
+  max-width: 310px;
+
+  font-size: 0.95rem;
+  line-height: 1.8;
+
+  color: #65576b;
+}
+
+.journal-interest-decoration {
+  font-size: 1.2rem;
+  color: #c77c9f;
+}
+
+/* =========================================
+   JOURNAL PAGE ARROWS
+========================================= */
+
+.journal-page-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 50;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 48px;
+  height: 48px;
+
+  padding: 0;
+
+  background: transparent;
+  border: none;
+
+  color: #a86a91;
+
+  opacity: 0.35;
+
+  cursor: pointer;
+
+  transition:
+    opacity 200ms ease,
+    color 200ms ease;
+}
+
+/* =========================================
+   ARROW POSITIONS
+========================================= */
+
+.journal-page-arrow--previous {
+  left: 0px;
+}
+
+.journal-page-arrow--next {
+  right: 0px;
+}
+
+/* =========================================
+   ARROW SYMBOLS
+========================================= */
+
+.journal-page-arrow-symbol {
+  display: inline-block;
+
+  font-family: Georgia, serif;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1;
+
+  --arrow-direction: 1;
+
+  animation:
+    journal-arrow-bounce 1400ms ease-in-out infinite;
+}
+
+/* =========================================
+   LEFT ARROW DIRECTION
+========================================= */
+
+.journal-page-arrow--previous
+.journal-page-arrow-symbol {
+  --arrow-direction: -1;
+}
+
+/* =========================================
+   HORIZONTAL BOUNCE
+========================================= */
+
+@keyframes journal-arrow-bounce {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform:
+      translateX(calc(4px * var(--arrow-direction)));
+  }
+}
+
+/* =========================================
+   ARROW HOVER
+========================================= */
+
+.journal-page-arrow:hover:not(:disabled) {
+  opacity: 0.85;
+}
+
+/* =========================================
+   DISABLED STATE
+========================================= */
+
+.journal-page-arrow:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.journal-page-arrow:disabled
+.journal-page-arrow-symbol {
+  animation-play-state: paused;
+}
+
+/* =========================================
+   KEYBOARD FOCUS
+========================================= */
+
+.journal-cover:focus-visible,
+.journal-page-arrow:focus-visible {
+  outline: 2px solid var(--color-purple);
+  outline-offset: 4px;
+}
+
+.journal-page-arrow:focus-visible {
+  opacity: 1;
+  border-radius: 4px;
+}
+
+/* =========================================
+   JOURNAL CONTROLS
+========================================= */
+
+.journal-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 3rem;
+  margin-top: 1.5rem;
+}
+
+.journal-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 0.5rem;
+
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+}
+
+/* =========================================
+   FEATHER ICON
+========================================= */
+
+.journal-feather {
+  display: inline-block;
+
+  width: 20px;
+  height: 20px;
+
+  flex-shrink: 0;
+
+  background-color: currentColor;
+
+  -webkit-mask:
+    url('/images/feather.svg') center / contain no-repeat;
+
+  mask:
+    url('/images/feather.svg') center / contain no-repeat;
+}
+
+/* =========================================
+   JOURNAL NAVIGATION HINT
+========================================= */
+
+.journal-navigation-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
+
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+
+  text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE - INITIAL ADJUSTMENTS
+========================================= */
+
+@media (max-width: 767px) {
+  .journal {
+    height: 650px;
+  }
+
+  .journal-right-page,
+  .journal-face--front.journal-paper,
+  .journal-face--back.journal-paper {
+    padding: 1.25rem;
+  }
+
+  .journal-page-title {
+    font-size: 1.15rem;
+  }
+
+  .journal-writing {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .journal-page-content--intro .journal-page-title {
+    font-size: 1.5rem;
+  }
+
+  .journal-intro-decoration {
+    gap: 0.5rem;
+  }
+
+  .journal-intro-description,
+  .journal-interest-description {
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+
+  .journal-interest-illustration {
+    width: 80px;
+    height: 80px;
+
+    font-size: 2rem;
+  }
+
+  /* Mobile navigation arrows */
+
+  .journal-page-arrow {
+  width: 36px;
+  height: 36px;
+}
+
+  .journal-page-arrow--previous {
+    left: 8px;
+  }
+
+  .journal-page-arrow--next {
+    right: 8px;
+  }
+
+  .journal-page-arrow-symbol {
+    font-size: 1.5rem;
+  }
+}
+
+/* =========================================
+   REDUCED MOTION
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .journal,
+  .journal-turning-page {
+    transition-duration: 1ms;
+  }
+
+  .journal-page-arrow-symbol {
+    animation: none;
+  }
+}
+
+@keyframes journal-arrow-appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 0.35;
+  }
+}
+
+.journal-page-arrow {
+  animation: journal-arrow-appear 250ms ease-out both;
+}
