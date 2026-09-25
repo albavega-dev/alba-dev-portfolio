@@ -78,6 +78,69 @@ h4 {
   animation: feather-fall 10s ease-in-out both;
 }
 
+/* =========================================
+   About Me - Polaroid entrance animation
+   ========================================= */
+
+@keyframes polaroid-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) rotate(-7deg) scale(0.94);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) rotate(2deg) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(3deg) scale(1);
+  }
+}
+
+.polaroid-photo {
+  animation: polaroid-entrance 450ms ease-out both;
+}
+
+
+/* =========================================
+   About Me - Washi tape placement animation
+   ========================================= */
+
+@keyframes polaroid-tape-placement {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -25px) scale(1.08);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translate(-50%, 2px) scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.polaroid-tape {
+  animation: polaroid-tape-placement 400ms ease-out 450ms both;
+}
+
+
+/* =========================================
+   Reduced motion accessibility
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .polaroid-photo,
+  .polaroid-tape {
+    animation: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .feather-fall {
     animation: none;

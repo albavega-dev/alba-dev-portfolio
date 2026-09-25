@@ -31,11 +31,32 @@ function About() {
             </p>
           </div>
 
-          <div
-            className="flex h-28 w-28 items-center justify-center rounded-full bg-[var(--color-lavender-soft)] text-4xl"
-            aria-hidden="true"
-          >
-            ✦
+          <div className="flex justify-center py-6 md:justify-end">
+            <div className="polaroid-photo relative w-64 rotate-[3deg] bg-white p-3 pb-10 shadow-[4px_6px_18px_rgba(185,165,214,0.25)] sm:w-72 lg:w-80">
+
+              <img
+                src="/images/profile.jpg"
+                alt="Alba, full-stack developer"
+                className="block h-auto w-full"
+              />
+
+              {/* Washi tape */}
+              <div
+                aria-hidden="true"
+                className="polaroid-tape pointer-events-none absolute -top-4 left-1/2 z-10 h-8 w-28"
+              >
+                <div
+                  className="h-full w-full bg-[var(--color-pink)] opacity-75 drop-shadow-[1px_2px_2px_rgba(120,80,100,0.15)]"
+                  style={{
+                    clipPath:
+                      'polygon(0% 0%, 97% 0%, 100% 12%, 97% 23%, 100% 35%, 97% 48%, 100% 60%, 97% 73%, 100% 85%, 97% 100%, 0% 100%, 3% 88%, 0% 75%, 3% 62%, 0% 50%, 3% 38%, 0% 25%, 3% 12%)',
+                    backgroundImage:
+                      'repeating-linear-gradient(90deg, rgba(255,255,255,0.18) 0px, rgba(255,255,255,0.18) 2px, transparent 2px, transparent 5px)',
+                  }}
+                />
+              </div>
+
+            </div>
           </div>
         </section>
 
