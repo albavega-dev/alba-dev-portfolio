@@ -172,6 +172,7 @@ function About() {
                   <SkillIcon name="jenkins" label="Jenkins" />
                   <SkillIcon name="openshift" label="OpenShift" />
                   <SkillIcon name="docker" label="Docker" />
+                  <SkillIcon name="nginx" label="Nginx" />
                   <SkillIcon name="vercel" label="Vercel" />
                   <SkillIcon
                     name="tomcat"
