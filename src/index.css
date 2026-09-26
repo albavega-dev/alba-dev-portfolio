@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -76,6 +76,108 @@ h4 {
 
 .feather-fall {
   animation: feather-fall 10s ease-in-out both;
+}
+
+/* =========================================
+   About Me - Polaroid entrance animation
+   ========================================= */
+
+@keyframes polaroid-entrance {
+  0% {
+    opacity: 0;
+    transform: translateY(35px) rotate(-7deg) scale(0.94);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateY(-4px) rotate(2deg) scale(1.01);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotate(3deg) scale(1);
+  }
+}
+
+.polaroid-photo {
+  animation: polaroid-entrance 450ms ease-out both;
+}
+
+
+/* =========================================
+   About Me - Washi tape placement animation
+   ========================================= */
+
+@keyframes polaroid-tape-placement {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -25px) scale(1.08);
+  }
+
+  65% {
+    opacity: 1;
+    transform: translate(-50%, 2px) scale(1);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translate(-50%, 0) scale(1);
+  }
+}
+
+.polaroid-tape {
+  animation: polaroid-tape-placement 400ms ease-out 450ms both;
+}
+
+/* About introduction profile card */
+.about-profile-card {
+  position: relative;
+  z-index: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  box-shadow: 0 8px 20px rgba(105, 84, 119, 0.12);
+}
+
+.about-profile-card::before {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: -0.68rem;
+  left: 50%;
+  width: 1.15rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 25%, var(--color-surface) 0 7%, transparent 8%), radial-gradient(circle at 38% 32%, var(--color-pink-soft) 0 22%, var(--color-pink) 67%, var(--color-purple) 100%);
+  box-shadow: 0 0.15rem 0.25rem rgba(105, 84, 119, 0.22);
+  transform: translateX(-50%) rotate(-8deg);
+}
+
+.about-profile-card::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -0.02rem;
+  left: 50%;
+  width: 0.28rem;
+  height: 0.5rem;
+  border-radius: 45% 45% 0.1rem 0.1rem;
+  background: linear-gradient(90deg, var(--color-pink), var(--color-pink-soft) 48%, var(--color-purple));
+  box-shadow: 0 0.08rem 0.16rem rgba(105, 84, 119, 0.18);
+  transform: translateX(-50%);
+}
+
+
+/* =========================================
+   Reduced motion accessibility
+   ========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .polaroid-photo,
+  .polaroid-tape {
+    animation: none;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

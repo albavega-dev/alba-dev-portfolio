@@ -15,21 +15,7 @@ function Navbar() {
           to="/about"
           className="text-base text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)]"
         >
-          About
-        </Link>
-
-        <Link
-          to="/experience"
-          className="text-base text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)]"
-        >
-          Experience
-        </Link>
-
-        <Link
-          to="/projects"
-          className="text-base text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)]"
-        >
-          Projects
+          About Me
         </Link>
 
         <Link
