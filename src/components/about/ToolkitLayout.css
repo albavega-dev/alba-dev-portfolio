@@ -10,4 +10,24 @@
     grid-column: auto !important;
     grid-row: auto !important;
   }
+
+  .toolkit-card:nth-child(odd) > div {
+    border-color: var(--color-pink) !important;
+    box-shadow: 4px 5px 0 rgba(223, 166, 195, 0.18) !important;
+    --skill-circle-color: var(--color-lavender) !important;
+  }
+
+  .toolkit-card:nth-child(odd) > div > span {
+    color: var(--color-pink) !important;
+  }
+
+  .toolkit-card:nth-child(even) > div {
+    border-color: var(--color-lavender) !important;
+    box-shadow: -4px 5px 0 rgba(185, 165, 214, 0.18) !important;
+    --skill-circle-color: var(--color-pink) !important;
+  }
+
+  .toolkit-card:nth-child(even) > div > span {
+    color: var(--color-lavender) !important;
+  }
 }
