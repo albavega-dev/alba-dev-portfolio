@@ -70,7 +70,7 @@ function About() {
         ========================================= */}
 
         <section className="mt-20">
-          <h2 className="text-2xl font-semibold text-[var(--color-purple)]">
+          <h2 className="text-[1.75rem] font-semibold text-[var(--color-purple)]">
             My Developer Toolkit
           </h2>
           <div className={`mt-10 grid grid-cols-1 items-start gap-x-12 gap-y-14 lg:grid-cols-2 ${isMeasured ? 'toolkit-masonry-ready' : ''}`}>
