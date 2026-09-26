@@ -129,6 +129,45 @@ h4 {
   animation: polaroid-tape-placement 400ms ease-out 450ms both;
 }
 
+/* About introduction profile card */
+.about-profile-card {
+  position: relative;
+  z-index: 0;
+  padding: 1.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  background: var(--color-surface);
+  box-shadow: 0 8px 20px rgba(105, 84, 119, 0.12);
+}
+
+.about-profile-card::before {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  top: -0.68rem;
+  left: 50%;
+  width: 1.15rem;
+  height: 1rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 25%, var(--color-surface) 0 7%, transparent 8%), radial-gradient(circle at 38% 32%, var(--color-pink-soft) 0 22%, var(--color-pink) 67%, var(--color-purple) 100%);
+  box-shadow: 0 0.15rem 0.25rem rgba(105, 84, 119, 0.22);
+  transform: translateX(-50%) rotate(-8deg);
+}
+
+.about-profile-card::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+  top: -0.02rem;
+  left: 50%;
+  width: 0.28rem;
+  height: 0.5rem;
+  border-radius: 45% 45% 0.1rem 0.1rem;
+  background: linear-gradient(90deg, var(--color-pink), var(--color-pink-soft) 48%, var(--color-purple));
+  box-shadow: 0 0.08rem 0.16rem rgba(105, 84, 119, 0.18);
+  transform: translateX(-50%);
+}
+
 
 /* =========================================
    Reduced motion accessibility

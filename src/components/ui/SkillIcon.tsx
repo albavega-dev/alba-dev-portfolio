@@ -11,7 +11,7 @@ function SkillIcon({ name, label, iconUrl, hoverEffect = 'circle-label-compact' 
   const includesLabel = hoverEffect === 'circle-label' || hoverEffect === 'circle-label-compact'
 
   return (
-    <div className={`group relative flex flex-col items-center gap-2 ${includesLabel ? 'mx-auto w-fit max-w-full' : ''}`}>
+    <div className={`group relative flex flex-col items-center gap-0 ${includesLabel ? 'mx-auto w-fit max-w-full' : ''}`}>
       <div
         className={`relative flex h-16 w-16 items-center justify-center bg-transparent ${
           hoverEffect === 'underline'
@@ -34,7 +34,7 @@ function SkillIcon({ name, label, iconUrl, hoverEffect = 'circle-label-compact' 
             strokeWidth="1.5"
             strokeLinecap="round"
             strokeLinejoin="round"
-            className="pointer-events-none absolute inset-0 h-full w-full overflow-visible text-[var(--color-lavender)]"
+            className="pointer-events-none absolute inset-0 h-full w-full overflow-visible text-[var(--skill-circle-color,var(--color-lavender))]"
           >
             <path
               d="M50.832 6.984 C33 -5 10 1 3 20 C-5 37 7 59 24 64 C45 72 65 54 63 36 C65 17 49 0 32 -1 C23 -2.2 12.92 0.92 5.43 7.06"
@@ -76,7 +76,7 @@ function SkillIcon({ name, label, iconUrl, hoverEffect = 'circle-label-compact' 
           strokeWidth="0.8"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className={`pointer-events-none absolute -left-5 w-[calc(100%+2.5rem)] overflow-visible text-[var(--color-lavender)] ${
+          className={`pointer-events-none absolute -left-5 w-[calc(100%+2.5rem)] overflow-visible text-[var(--skill-circle-color,var(--color-lavender))] ${
             hoverEffect === 'circle-label-compact'
               ? '-top-1 h-[calc(100%+1rem)]'
               : '-top-3 h-[calc(100%+2rem)]'

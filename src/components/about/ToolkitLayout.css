@@ -1,0 +1,13 @@
+@media (min-width: 1024px) {
+  .toolkit-masonry-ready {
+    grid-auto-rows: 1px;
+    row-gap: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .toolkit-card {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+}
