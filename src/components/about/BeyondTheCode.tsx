@@ -6,11 +6,9 @@ import {
   AboutPage,
   InterestsIntroPage,
   GamingPage,
-  ReadingPage,
-  WritingPage,
+  LiteraturePage,
   DesignPage,
   MusicPage,
-  ArtPage,
 } from './JournalPages'
 
 import './BeyondTheCode.css'
@@ -63,6 +61,10 @@ function JournalSheet({
         isTurned
           ? 'journal-turning-page--turned'
           : ''
+      } ${
+        currentPage === index - 1
+          ? 'journal-turning-page--showing-front'
+          : ''
       }`}
       style={{ zIndex }}
       onTransitionEnd={(event) => {
@@ -99,29 +101,12 @@ function JournalSheet({
           {/* Cover decoration */}
 
           <span className="journal-cover-inner">
-            <span
-              className="journal-cover-decoration"
-              aria-hidden="true"
-            >
-              ✧ ♡ ✧
-            </span>
-
             <span className="journal-cover-title">
               Beyond
               <br />
               the code
             </span>
 
-            <span className="journal-cover-subtitle">
-              A little piece of me
-            </span>
-
-            <span
-              className="journal-cover-decoration"
-              aria-hidden="true"
-            >
-              ✿
-            </span>
           </span>
         </button>
       ) : (
@@ -156,12 +141,8 @@ const sheets = [
     back: <GamingPage />,
   },
   {
-    front: <ReadingPage />,
-    back: <WritingPage />,
-  },
-  {
-    front: <DesignPage />,
-    back: <MusicPage />,
+    front: <LiteraturePage />,
+    back: <DesignPage />,
   },
 ]
 
@@ -272,7 +253,7 @@ function BeyondTheCode() {
               className="journal-right-page journal-paper"
               aria-hidden={!isOpen}
             >
-              <ArtPage />
+              <MusicPage />
             </div>
 
             {/* =====================================
@@ -302,26 +283,21 @@ function BeyondTheCode() {
                 {/* Previous page / Close journal */}
 
                 <button
-                  type="button"
-                  className="journal-page-arrow journal-page-arrow--previous"
-                  onClick={previousPage}
-                  aria-label={
-                    currentPage === 0
-                      ? 'Close journal'
-                      : 'Previous page'
-                  }
-                  title={
-                    currentPage === 0
-                      ? 'Close journal'
-                      : 'Previous page'
-                  }
-                >
-                  <span
-                    className="journal-page-arrow-symbol"
-                    aria-hidden="true"
-                  >
-                    ‹‹
-                  </span>
+                    type="button"
+                    className="journal-page-arrow journal-page-arrow--previous"
+                    onClick={previousPage}
+                    aria-label={
+                        currentPage === 0
+                        ? 'Close journal'
+                        : 'Previous page'
+                    }
+                    >
+                    <span
+                        className="journal-page-arrow-symbol"
+                        aria-hidden="true"
+                    >
+                        ‹‹
+                    </span>
                 </button>
 
                 {/* Next page */}
@@ -332,15 +308,14 @@ function BeyondTheCode() {
                     className="journal-page-arrow journal-page-arrow--next"
                     onClick={nextPage}
                     aria-label="Next page"
-                    title="Next page"
-                  >
-                    <span
-                      className="journal-page-arrow-symbol"
-                      aria-hidden="true"
                     >
-                      ››
+                    <span
+                        className="journal-page-arrow-symbol"
+                        aria-hidden="true"
+                    >
+                        ››
                     </span>
-                  </button>
+                </button>
                 )}
               </>
             )}
@@ -359,23 +334,10 @@ function BeyondTheCode() {
                   ? 'A little about me'
                   : `My favourites · ${currentPage} / ${LAST_PAGE}`}
               </span>
-
-              <span aria-hidden="true">
-                ·
-              </span>
-
-              <span>
-                Use the page edges to explore
-              </span>
             </div>
           ) : (
             <p className="journal-hint">
               Click the journal to open it
-
-              <span
-                className="journal-feather"
-                aria-hidden="true"
-              />
             </p>
           )}
         </div>
