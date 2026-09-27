@@ -1,6 +1,7 @@
 import PageContainer from '../../components/layout/PageContainer'
 import type { MouseEvent } from 'react'
 import { IconChartLine, IconDeviceDesktopCode, IconDownload, IconWorld } from '@tabler/icons-react'
+import CVExperience from './CVExperience'
 import './CV.css'
 
 const preventUnavailableDownload = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -11,7 +12,8 @@ function CV() {
   return (
     <PageContainer>
       <main className="cv-page">
-        <header className="cv-header">
+        <section className="cv-hero">
+          <header className="cv-header">
           <div className="cv-header-copy">
             <p className="cv-kicker"><span>Professional overview</span></p>
             <h1>Curriculum Vitae</h1>
@@ -43,13 +45,15 @@ function CV() {
             </div>
           </div>
           </div>
-        </header>
-        <div className="cv-flight-decoration" aria-hidden="true">
-          <svg className="cv-flight-path" viewBox="0 0 1000 90" preserveAspectRatio="none">
-            <path d="M4 32 C84 78 142 76 196 48 C238 26 278 38 300 62 C325 88 370 76 420 48 C478 15 524 26 562 58 C606 94 660 78 710 48 C760 18 812 32 842 56 C880 86 914 75 948 54" />
-          </svg>
-          <img className="cv-flight-bird" src="/images/flying-bird.svg" alt="" />
-        </div>
+          </header>
+          <div className="cv-flight-decoration" aria-hidden="true">
+            <svg className="cv-flight-path" viewBox="0 0 1000 90" preserveAspectRatio="none">
+              <path d="M4 32 C84 78 142 76 196 48 C238 26 278 38 300 62 C325 88 370 76 420 48 C478 15 524 26 562 58 C606 94 660 78 710 48 C760 18 812 32 842 56 C880 86 914 75 948 54" />
+            </svg>
+            <img className="cv-flight-bird" src="/images/flying-bird.svg" alt="" />
+          </div>
+        </section>
+        <CVExperience />
       </main>
     </PageContainer>
   )

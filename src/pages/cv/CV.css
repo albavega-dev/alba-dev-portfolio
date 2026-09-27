@@ -5,6 +5,10 @@
     margin: 0 auto;
     padding: 0 0 6rem;
 }
+.cv-hero {
+    position: relative;
+    padding-bottom: 6rem;
+}
 .cv-header {
     display: grid;
     grid-template-columns: minmax(0, 1.1fr) minmax(22rem, .9fr);
@@ -442,6 +446,9 @@
   .cv-header-right,
   .cv-flight-decoration {
       display: none;
+  }
+  .cv-hero {
+      padding-bottom: 0;
   }
 }
 @media (prefers-reduced-motion: reduce) {
