@@ -1,75 +1,95 @@
-# React + TypeScript + Vite
+# Alba Dev Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Alba Dev Portfolio is Alba Vega's personal developer portfolio. It brings together her professional experience, frontend and full-stack background, technical toolkit, personal interests and custom interface work.
 
-Currently, two official plugins are available:
+## About the project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+This is a custom-built portfolio interface rather than a template. The public V1 focuses on three areas: Home, About Me and CV.
 
-## React Compiler
+About Me contains the technical toolkit and the interactive Beyond the Code journal. The CV presents professional experience, education and downloadable English and Spanish CV documents.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The visual language uses a soft pink and lavender palette with editorial and scrapbook-inspired details, while keeping the content structured and easy to scan.
 
-## Expanding the ESLint configuration
+## Highlights
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Responsive navigation with route-aware interactions and a custom animated divider.
+- Rough Notation highlights for the primary navigation links.
+- A responsive toolkit layout with measured desktop masonry placement.
+- The interactive Beyond the Code journal, with desktop, tablet and phone-specific reading modes.
+- Keyboard-accessible journal controls, visible focus states and reduced-motion handling.
+- A custom CV timeline covering professional experience, education and early beginnings.
+- Downloadable English and Spanish CV documents.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Tech stack
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Core
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React
+- TypeScript
+- Vite
+- Tailwind CSS
+- React Router
 
+### UI and interaction
+
+- Tabler Icons
+- Rough Notation
+- `react-vertical-timeline-component`
+- Custom CSS and SVG interactions
+
+### Code quality
+
+- ESLint
+- TypeScript compilation as part of the production build
+
+## Project structure
+
+```text
+src/
+├── components/
+│   ├── about/       # Toolkit, journal and About-specific interactions
+│   ├── layout/      # Navbar, footer, shared containers and route behavior
+│   └── ui/          # Reusable interface components
+├── pages/           # Route-level page content
+│   ├── about/
+│   ├── cv/
+│   ├── experience/
+│   ├── home/
+│   └── projects/
+└── index.css        # Global tokens, typography and base styles
+
+public/              # Stable public assets and downloadable CV PDFs
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Pages own route-level content. Shared application structure lives in `components/layout`, while the About and CV folders contain feature-specific interactions and styles.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Accessibility and responsive design
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The interface uses semantic landmarks, keyboard-accessible controls, visible `focus-visible` states and ARIA attributes where they add useful context. Decorative images and SVGs are excluded from assistive technology, while links retain semantic destinations and accessible names.
 
+Interactive motion responds to `prefers-reduced-motion`. The toolkit returns to normal document flow at smaller widths, and the journal switches between desktop spread, single-page and phone reader presentations according to viewport size.
+
+## Getting started
+
+Prerequisites: Node.js and npm.
+
+```bash
+npm install
+npm run dev
 ```
+
+Vite starts the local development server for the portfolio.
+
+## Available scripts
+
+```bash
+npm run dev      # Start the Vite development server
+npm run lint     # Run ESLint
+npm run build    # TypeScript build followed by the Vite production build
+npm run preview  # Preview the production build locally
+```
+
+## Contact
+
+- [LinkedIn](https://www.linkedin.com/in/alba-vega-calzado-7b976611a/)
+- [Email](mailto:avegac14@gmail.com)
