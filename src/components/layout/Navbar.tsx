@@ -19,25 +19,12 @@ function Navbar() {
         </Link>
 
         <Link
-          to="/ui-lab"
-          className="text-base text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)]"
-        >
-          UI Lab
-        </Link>
-
-        <Link
           to="/cv"
           className="text-base text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)]"
         >
           CV
         </Link>
 
-        <Link
-          to="/contact"
-          className="text-base text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)]"
-        >
-          Contact
-        </Link>
       </div>
     </nav>
   )
