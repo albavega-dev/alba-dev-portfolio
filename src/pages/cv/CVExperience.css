@@ -1,0 +1,397 @@
+.cv-experience {
+    width: min(100%, 1100px);
+    margin: 2rem auto 0;
+    padding: 3rem 0 6rem;
+}
+.cv-experience h2 {
+    margin: 0 0 3.5rem;
+    color: var(--color-purple);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2.4rem, 5vw, 4.4rem);
+    font-weight: 500;
+    line-height: 1;
+}
+.cv-employer {
+    margin: 0 0 2rem;
+    margin-left: 60px;
+    padding-left: 0;
+}
+.cv-employer-label {
+    color: var(--color-pink);
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+}
+.cv-employer h3 {
+    position: relative;
+    margin: .25rem 0 .35rem;
+    color: var(--color-purple);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 2.2rem;
+    font-weight: 500;
+}
+.cv-employer p {
+    margin: 0;
+    color: var(--color-text-secondary);
+}
+.cv-experience-timeline.vertical-timeline {
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+    padding: 0;
+}
+.cv-experience-timeline.vertical-timeline::before {
+    display: none;
+}
+.cv-experience-timeline-shell {
+    position: relative;
+    padding-bottom: 3rem;
+}
+.cv-timeline-thread {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -4px;
+    z-index: 0;
+    width: 48px;
+    height: auto;
+    overflow: visible;
+    pointer-events: none;
+}
+.cv-timeline-thread line {
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.cv-timeline-thread__base {
+    stroke: color-mix(in srgb, var(--color-purple) 76%, var(--color-text));
+    stroke-width: 3px;
+}
+.cv-timeline-thread__body {
+    stroke: var(--color-purple);
+    stroke-width: 2px;
+}
+.cv-timeline-thread__highlight {
+    stroke: var(--color-lavender);
+    stroke-width: .8px;
+    opacity: .35;
+}
+.cv-experience-timeline .vertical-timeline-element-icon {
+    position: absolute;
+    display: flex;
+    width: 3.75rem;
+    height: 3.75rem;
+    top: -.35rem;
+    margin-left: -.625rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: 0 0 0 .25rem var(--color-background);
+    z-index: 1;
+}
+.cv-experience-timeline .vertical-timeline-element-icon::before {
+    position: absolute;
+    top: calc(50% - .1rem);
+    left: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 50%;
+    background: var(--color-background);
+    content: "";
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+.cv-experience-timeline .vertical-timeline-element-icon img {
+    display: block;
+    position: relative;
+    width: 3.75rem;
+    height: 3.75rem;
+    object-fit: contain;
+    filter: drop-shadow(3.5px 0 0 #fff) drop-shadow(-3.5px 0 0 #fff)
+        drop-shadow(0 3.5px 0 #fff) drop-shadow(0 -3.5px 0 #fff)
+        drop-shadow(1.75px 1.75px 0 #fff) drop-shadow(-1.75px -1.75px 0 #fff)
+        drop-shadow(2px 3px 2px rgba(105, 84, 119, 0.2));
+    opacity: .82;
+}
+.cv-timeline-icon--star-1 img {
+    transform: rotate(-6deg);
+}
+.cv-timeline-icon--star-2 img {
+    transform: rotate(5deg);
+}
+.cv-timeline-icon--star-3 img {
+    transform: rotate(-4deg);
+}
+.cv-timeline-icon--star-4 img {
+    transform: rotate(7deg);
+}
+.cv-timeline-icon--star-5 img {
+    transform: rotate(-5deg);
+}
+.cv-timeline-icon--star-jamones img {
+    transform: rotate(4deg);
+}
+.cv-experience-timeline .vertical-timeline-element-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-left: 60px;
+    padding: 0 0 3rem;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+    z-index: 2;
+}
+.cv-experience-timeline .vertical-timeline-element-content-arrow {
+    display: none;
+}
+.cv-experience-timeline .vertical-timeline-element-content h3 {
+    margin: 0;
+    color: var(--color-purple);
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 1.75rem;
+    font-weight: 500;
+    line-height: 1.1;
+}
+.cv-experience-timeline .vertical-timeline-element-date {
+    order: -1;
+    display: block;
+    margin: 0 0 .65rem;
+    padding: 0;
+    color: var(--color-text-secondary);
+    font-size: .85rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+.cv-experience-timeline .cv-timeline-content--pink {
+    padding-bottom: 4rem;
+}
+.cv-timeline-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1rem;
+    height: 1.1rem;
+    margin-left: -.55rem;
+    border: 1px solid var(--color-pink);
+    border-radius: 50%;
+    box-shadow: 0 0 0 .25rem var(--color-background);
+}
+.cv-timeline-icon--pink {
+    color: var(--color-pink);
+}
+.cv-timeline-icon--lavender {
+    color: var(--color-lavender);
+}
+.cv-project-role {
+    margin: .15rem 0 1rem;
+    color: var(--color-pink);
+    font-weight: 600;
+}
+.cv-experience-timeline .cv-project-role {
+    margin-top: .15rem;
+}
+.cv-experience-timeline .cv-timeline-content--banking .cv-project-role {
+    margin-bottom: 1rem;
+}
+.cv-project-description {
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+.cv-experience-timeline .cv-project-description {
+    line-height: 1.5;
+}
+.cv-experience-timeline ul {
+    display: grid;
+    gap: .55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.cv-experience-timeline li {
+    position: relative;
+    padding-left: 1rem;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+.cv-experience-timeline li::before {
+    position: absolute;
+    top: .7em;
+    left: 0;
+    width: .45rem;
+    height: 1px;
+    background: var(--color-pink);
+    content: '';
+}
+.cv-experience-timeline .cv-timeline-content--banking > ul li {
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+}
+.cv-project-technologies {
+    margin: 1.25rem 0 0;
+    color: var(--color-lavender);
+    font-size: .82rem;
+    letter-spacing: .04em;
+}
+.cv-education-transition {
+    margin: 6.5rem 0 2rem 60px;
+    position: relative;
+    z-index: 2;
+}
+.cv-education-transition .cv-employer-label {
+    display: inline-block;
+}
+.cv-education-marker,
+.cv-early-marker,
+.cv-employer-marker {
+    position: absolute;
+    top: 50%;
+    left: -72px;
+    display: grid;
+    place-items: center;
+    width: 4rem;
+    height: 4rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--color-purple);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+.cv-education-transition h3,
+.cv-early-transition h3 {
+    position: relative;
+}
+.cv-education-marker__outline,
+.cv-early-marker__outline,
+.cv-employer-marker__outline {
+    position: absolute;
+    color: #fff;
+}
+.cv-education-marker > svg:not(.cv-education-marker__outline),
+.cv-early-marker > svg:not(.cv-early-marker__outline),
+.cv-employer-marker > svg:not(.cv-employer-marker__outline) {
+    position: relative;
+    z-index: 1;
+}
+.cv-education-marker__mask,
+.cv-early-marker__mask,
+.cv-employer-marker__mask {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--color-background);
+    content: "";
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+.cv-timeline-content--education {
+    padding-bottom: 1.5rem;
+}
+.cv-experience-timeline > .vertical-timeline-element:nth-child(4) {
+    margin-top: .5rem;
+}
+.cv-experience-timeline > .vertical-timeline-element:nth-child(7) {
+    margin-top: .5rem;
+}
+.cv-timeline-content--education h3 {
+    font-size: 1.45rem;
+}
+.cv-education-institution {
+    margin: .45rem 0 0;
+    color: var(--color-text-secondary);
+    font-size: 1rem;
+}
+.cv-early-transition {
+    margin: 6.5rem 0 2rem 60px;
+}
+.cv-timeline-content--early {
+    padding-bottom: 1.5rem;
+}
+.cv-experience-timeline .cv-timeline-content--early .cv-early-highlights {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .45rem 1rem;
+    margin: 1.25rem 0 0;
+    padding: 0;
+    color: var(--color-lavender);
+    font-size: .82rem;
+    letter-spacing: .04em;
+    list-style: none;
+}
+.cv-experience-timeline .cv-timeline-content--early .cv-early-highlights li {
+    position: relative;
+    padding-left: 0;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: 1.5;
+}
+.cv-experience-timeline .cv-timeline-content--early .cv-early-highlights li::before {
+    display: none;
+}
+.cv-experience-timeline .cv-timeline-content--early .cv-early-highlights li + li::before {
+    position: static;
+    display: inline;
+    margin-right: .75rem;
+    background: none;
+    color: inherit;
+    content: '·';
+}
+.cv-early-editorial-note {
+    margin: 1.25rem 0 0;
+    color: var(--color-lavender);
+    font-size: .82rem;
+    letter-spacing: .04em;
+}
+.cv-project-link {
+    display: inline-block;
+    align-self: flex-start;
+    margin-top: 1rem;
+    color: var(--color-purple);
+    font-size: .9rem;
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-color: var(--color-pink);
+    text-underline-offset: .2em;
+}
+@media (min-width: 768px) {
+    .cv-experience-timeline .vertical-timeline-element-content {
+        margin-left: 88px;
+        padding: 1.5rem 1.5rem 1.5rem 1.8rem;
+        background: var(--color-surface);
+        border: 1px dashed transparent;
+    }
+    .cv-experience-timeline .cv-timeline-content--early .cv-early-highlights {
+        font-size: 1rem;
+    }
+    .cv-experience-timeline .cv-timeline-content--pink {
+        border: 1px dashed var(--color-pink);
+        box-shadow: 4px 5px 0 rgba(223, 166, 195, 0.18);
+    }
+    .cv-experience-timeline .cv-timeline-content--lavender {
+        border: 1px dashed var(--color-lavender);
+        box-shadow: -4px 5px 0 rgba(185, 165, 214, 0.18);
+    }
+}
+@media (max-width: 767px) {
+    .cv-education-transition {
+        margin-left: 60px;
+    }
+    .cv-education-marker,
+    .cv-early-marker,
+    .cv-employer-marker {
+        left: -72px;
+    }
+    .cv-experience {
+        padding: 3rem 0 4rem;
+    }
+}
+

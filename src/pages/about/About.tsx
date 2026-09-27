@@ -100,8 +100,10 @@ function About() {
                   <SkillIcon name="react" label="React" />
                   <SkillIcon name="js" label="JavaScript" />
                   <SkillIcon name="jquery" label="jQuery" />
-                  <SkillIcon name="html" label="HTML" />
+                  <SkillIcon name="html" label="HTML5" />
                   <SkillIcon name="css" label="CSS" />
+                  <SkillIcon name="scss" label="SCSS" />
+                  <SkillIcon name="bootstrap" label="Bootstrap" />
                   <SkillIcon name="tailwind" label="Tailwind CSS" />
                   <SkillIcon
                     name="cordova"
@@ -170,6 +172,7 @@ function About() {
                   <SkillIcon name="jenkins" label="Jenkins" />
                   <SkillIcon name="openshift" label="OpenShift" />
                   <SkillIcon name="docker" label="Docker" />
+                  <SkillIcon name="nginx" label="Nginx" />
                   <SkillIcon name="vercel" label="Vercel" />
                   <SkillIcon
                     name="tomcat"
