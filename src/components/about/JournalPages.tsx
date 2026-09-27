@@ -3,9 +3,6 @@ import type { ReactNode } from 'react'
 import { UiCreativeCodingContent } from './UiCreativeCodingContent'
 import { MusicContent } from './MusicContent'
 
-/* =========================================
-   JOURNAL PAGE TYPES
-========================================= */
 
 type JournalPageProps = {
   title: ReactNode
@@ -13,9 +10,6 @@ type JournalPageProps = {
   variant?: 'standard' | 'intro'
 }
 
-/* =========================================
-   JOURNAL PAGE COMPONENT
-========================================= */
 
 function JournalPage({
   title,
@@ -35,9 +29,6 @@ function JournalPage({
   )
 }
 
-/* =========================================
-   ABOUT ME
-========================================= */
 
 export function AboutPage() {
   return (
@@ -63,9 +54,6 @@ export function AboutPage() {
   )
 }
 
-/* =========================================
-   THINGS I LOVE - INTRODUCTION
-========================================= */
 
 export function InterestsIntroPage() {
   return (
@@ -79,8 +67,6 @@ export function InterestsIntroPage() {
         There's more to life than debugging.
         Apparently.
       </p>
-
-      {/* Scrapbook note */}
 
       <div className="journal-intro-scrapbook">
         <span
@@ -100,9 +86,6 @@ export function InterestsIntroPage() {
   )
 }
 
-/* =========================================
-   INDIVIDUAL INTEREST PAGE
-========================================= */
 
 type InterestPageProps = {
   title: string
@@ -140,9 +123,6 @@ function InterestPage({
   )
 }
 
-/* =========================================
-   GAMING - CHARACTER SHEET
-========================================= */
 
 export function GamingPage() {
   return (
@@ -175,14 +155,10 @@ export function GamingPage() {
       <div className="journal-gaming">
         <div className="journal-gaming-sheet">
 
-          {/* Washi tape */}
-
           <span
             className="journal-gaming-tape"
             aria-hidden="true"
           />
-
-          {/* Character identity */}
 
           <div className="journal-gaming-header">
             <div
@@ -194,7 +170,6 @@ export function GamingPage() {
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
                 >
-                    {/* Character silhouette */}
 
                     <path
                     d="
@@ -241,8 +216,6 @@ export function GamingPage() {
             </div>
           </div>
 
-          {/* Favourite genres */}
-
             <div className="journal-gaming-section">
             <span className="journal-gaming-label">
                 FAVOURITE GENRES
@@ -254,8 +227,6 @@ export function GamingPage() {
                 <li>MMOs</li>
             </ul>
             </div>
-
-          {/* Character backstory */}
 
           <div className="journal-gaming-section">
             <span className="journal-gaming-label">
@@ -277,9 +248,6 @@ export function GamingPage() {
   )
 }
 
-/* =========================================
-   LITERATURE & READING
-========================================= */
 
 export function LiteraturePage() {
   return (
@@ -334,9 +302,6 @@ function ReviewComment() {
   )
 }
 
-/* =========================================
-   WRITING & REVIEWS
-========================================= */
 
 export function WritingPage() {
   return (
@@ -348,9 +313,6 @@ export function WritingPage() {
   )
 }
 
-/* =========================================
-   UI DESIGN & CREATIVE CODING
-========================================= */
 
 export function DesignPage() {
   return (
@@ -358,19 +320,8 @@ export function DesignPage() {
       <UiCreativeCodingContent />
     </JournalPage>
   )
-  /*
-  return (
-    <InterestPage
-      title="UI Design & Creative Coding"
-      icon="✧"
-      description="I love experimenting with layouts, colours, animations and small creative projects where design and code come together."
-    />
-  ) */
 }
 
-/* =========================================
-   MUSIC
-========================================= */
 
 export function MusicPage() {
   return (
@@ -378,20 +329,8 @@ export function MusicPage() {
       <MusicContent />
     </JournalPage>
   )
-  /*
-  return (
-    <InterestPage
-      title="Music"
-      icon="♫"
-      description="Music is one of those little things that can make an ordinary day feel completely different."
-    />
-  )
-  */
 }
 
-/* =========================================
-   ART & ILLUSTRATION
-========================================= */
 
 export function ArtPage() {
   return (
