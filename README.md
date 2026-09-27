@@ -1,5 +1,7 @@
 # Alba Dev Portfolio
 
+[![CI](https://github.com/albavega-dev/alba-dev-portfolio/actions/workflows/ci.yml/badge.svg)](https://github.com/albavega-dev/alba-dev-portfolio/actions/workflows/ci.yml)
+
 Alba Dev Portfolio is Alba Vega's personal developer portfolio. It brings together her professional experience, frontend and full-stack background, technical toolkit, personal interests and custom interface work.
 
 ## About the project
@@ -9,6 +11,16 @@ This is a custom-built portfolio interface rather than a template. The public V1
 About Me contains the technical toolkit and the interactive Beyond the Code journal. The CV presents professional experience, education and downloadable English and Spanish CV documents.
 
 The visual language uses a soft pink and lavender palette with editorial and scrapbook-inspired details, while keeping the content structured and easy to scan.
+
+## Live site
+
+[albavega.vercel.app](https://albavega.vercel.app/)
+
+## Version
+
+The current first public release is V1.0.0.
+
+The site is deployed on Vercel.
 
 ## Highlights
 
@@ -41,6 +53,7 @@ The visual language uses a soft pink and lavender palette with editorial and scr
 
 - ESLint
 - TypeScript compilation as part of the production build
+- Focused Vitest + React Testing Library suite with 5 tests
 
 ## Project structure
 
@@ -85,8 +98,20 @@ Vite starts the local development server for the portfolio.
 ```bash
 npm run dev      # Start the Vite development server
 npm run lint     # Run ESLint
+npm run test     # Run the focused Vitest test suite
 npm run build    # TypeScript build followed by the Vite production build
 npm run preview  # Preview the production build locally
+```
+
+## CI and validation
+
+GitHub Actions validates pull requests targeting `main` with:
+
+```bash
+npm ci
+npm run lint
+npm run test
+npm run build
 ```
 
 ## Contact
