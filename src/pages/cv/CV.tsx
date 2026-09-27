@@ -1,12 +1,7 @@
 import PageContainer from '../../components/layout/PageContainer'
-import type { MouseEvent } from 'react'
 import { IconChartLine, IconDeviceDesktopCode, IconDownload, IconWorld } from '@tabler/icons-react'
 import CVExperience from './CVExperience'
 import './CV.css'
-
-const preventUnavailableDownload = (event: MouseEvent<HTMLAnchorElement>) => {
-  event.preventDefault()
-}
 
 function CV() {
   return (
@@ -25,8 +20,8 @@ function CV() {
             </dl>
             <div className="cv-downloads" aria-label="CV downloads">
               <div className="cv-download-links">
-                <a href="/Alba_Vega_CV_EN.pdf" onClick={preventUnavailableDownload} aria-disabled="true">Download CV (English) <IconDownload size={17} stroke={1.7} aria-hidden="true" /></a>
-                <a href="/Alba_Vega_CV_ES.pdf" onClick={preventUnavailableDownload} aria-disabled="true">Descargar CV (Español) <IconDownload size={17} stroke={1.7} aria-hidden="true" /></a>
+                <a href="/Alba_Vega_CV_EN.pdf" download="Alba_Vega_CV_EN.pdf">Download CV (English) <IconDownload size={17} stroke={1.7} aria-hidden="true" /></a>
+                <a href="/Alba_Vega_CV_ES.pdf" download="Alba_Vega_CV_ES.pdf">Descargar CV (Español) <IconDownload size={17} stroke={1.7} aria-hidden="true" /></a>
               </div>
             </div>
           </div>
