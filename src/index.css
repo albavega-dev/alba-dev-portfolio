@@ -24,10 +24,6 @@
   --color-border: #e8dfea;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
   min-width: 320px;
@@ -76,6 +72,14 @@ h4 {
 
 .feather-fall {
   animation: feather-fall 10s ease-in-out both;
+  animation-delay: 0ms;
+}
+
+.home-magical-star {
+  filter: drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff)
+    drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)
+    drop-shadow(1px 1px 0 #fff) drop-shadow(-1px -1px 0 #fff)
+    drop-shadow(2px 3px 2px rgba(105, 84, 119, 0.2));
 }
 
 /* =========================================

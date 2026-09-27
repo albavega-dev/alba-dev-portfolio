@@ -1,12 +1,13 @@
 type SectionTitleProps = {
   title: string
   description?: string
+  titleClassName?: string
 }
 
-function SectionTitle({ title, description }: SectionTitleProps) {
+function SectionTitle({ title, description, titleClassName }: SectionTitleProps) {
   return (
     <header>
-      <h1 className="text-4xl font-semibold tracking-tight text-[var(--color-purple)] md:text-5xl">
+      <h1 className={`text-4xl font-semibold tracking-tight text-[var(--color-purple)] md:text-5xl ${titleClassName ?? ''}`}>
         {title}
       </h1>
     
