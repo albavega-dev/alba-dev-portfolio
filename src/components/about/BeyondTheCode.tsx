@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 import type { MouseEvent, PointerEvent as ReactPointerEvent, ReactNode, RefObject } from 'react'
 
 import { journalPages, pagesForSpread, spreadForPage } from './JournalPageDefinitions'
+import { useLanguage } from '../../i18n/useLanguage'
 
 import './BeyondTheCode.css'
 
@@ -35,6 +36,7 @@ function JournalSheet({
   onOpen,
   onTurnEnd,
 }: JournalSheetProps) {
+  const { translations } = useLanguage()
   const isTurned = currentPage >= index
 
   /*
@@ -79,7 +81,7 @@ function JournalSheet({
           type="button"
           className="journal-face journal-face--front journal-cover"
           onClick={onOpen}
-          aria-label="Open Beyond the Code journal"
+          aria-label={translations.journal.cover.openLabel}
           aria-expanded={currentPage >= 0}
           tabIndex={currentPage === -1 ? 0 : -1}
           disabled={currentPage >= 0}
@@ -95,9 +97,9 @@ function JournalSheet({
 
           <span className="journal-cover-inner">
             <span className="journal-cover-title">
-              Beyond
+              {translations.journal.cover.title.split(' ')[0]}
               <br />
-              the code
+              {translations.journal.cover.title.split(' ').slice(1).join(' ')}
             </span>
 
           </span>
@@ -146,6 +148,7 @@ const LAST_PAGE = journalPages.length - 1
 ========================================= */
 
 function BeyondTheCode() {
+  const { translations } = useLanguage()
   const [currentPage, setCurrentPage] = useState(-1)
   const [lastOpenPage, setLastOpenPage] = useState(0)
   const [isSinglePage, setIsSinglePage] = useState(false)
@@ -281,7 +284,7 @@ function BeyondTheCode() {
   if (isSinglePage) {
     return (
       <section className="mt-24 pb-16" aria-labelledby="beyond-the-code-title">
-        <h2 id="beyond-the-code-title" className="sr-only">Beyond the Code</h2>
+        <h2 id="beyond-the-code-title" className="sr-only">{translations.journal.sectionTitle}</h2>
         <MobileJournal currentPage={currentPage} lastOpenPage={lastOpenPage} isTurning={isTurning} isPhone={isPhone} onOpen={openJournal} onNext={nextPage} onPrevious={previousPage} coverRef={coverRef} navigationRef={mobileNavigationRef} />
       </section>
     )
@@ -313,7 +316,7 @@ function BeyondTheCode() {
         id="beyond-the-code-title"
         className="sr-only"
       >
-        Beyond the Code
+        {translations.journal.sectionTitle}
       </h2>
 
       {/* =====================================
@@ -371,8 +374,8 @@ function BeyondTheCode() {
                     onClick={previousPage}
                     aria-label={
                         currentSpread === 0
-                        ? 'Close journal'
-                        : 'Previous page'
+                        ? translations.journal.navigation.closeLabel
+                        : translations.journal.navigation.previousLabel
                     }
                     >
                     <span
@@ -390,7 +393,7 @@ function BeyondTheCode() {
                     type="button"
                     className="journal-page-arrow journal-page-arrow--next"
                     onClick={nextPage}
-                    aria-label="Next page"
+                    aria-label={translations.journal.navigation.nextLabel}
                     >
                     <span
                         className="journal-page-arrow-symbol"
@@ -414,13 +417,13 @@ function BeyondTheCode() {
             <div className="journal-navigation-hint">
               <span>
                 {currentPage === 0
-                  ? 'A little about me'
-                  : `My favourites · ${currentSpread} / ${spreadForPage(LAST_PAGE)}`}
+                  ? translations.journal.navigation.firstPageHint
+                  : `${translations.journal.navigation.pageIndicator} · ${currentSpread} / ${spreadForPage(LAST_PAGE)}`}
               </span>
             </div>
           ) : (
             <p className="journal-hint">
-              Click the journal to open it
+              {translations.journal.navigation.closedHint}
             </p>
           )}
         </div>
@@ -442,6 +445,7 @@ type MobileJournalProps = {
 }
 
 function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, onNext, onPrevious, coverRef, navigationRef }: MobileJournalProps) {
+  const { translations } = useLanguage()
   const isOpen = currentPage >= 0
   const isClosing = isPhone && !isOpen && isTurning
   const page = journalPages[isOpen ? currentPage : lastOpenPage]
@@ -505,7 +509,7 @@ function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, 
       <div className="journal-mobile-stage">
         <div className="journal-mobile-inline-shell">
           <div className="journal-mobile-book">
-            <button ref={coverRef} type="button" className="journal-cover journal-mobile-cover" onClick={onOpen} aria-label="Open Beyond the Code journal">
+            <button ref={coverRef} type="button" className="journal-cover journal-mobile-cover" onClick={onOpen} aria-label={translations.journal.cover.openLabel}>
               <span className="journal-spine" aria-hidden="true" />
               <span className="journal-cover-inner"><span className="journal-cover-title">Beyond<br />the code</span></span>
             </button>
@@ -527,8 +531,8 @@ function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, 
               </div>
               {isOpen && !isTurning && (
                 <>
-                  <button ref={navigationRef} type="button" className="journal-page-arrow journal-page-arrow--previous" onClick={onPrevious} aria-label={currentPage === 0 ? 'Close journal' : 'Previous page'}><span className="journal-page-arrow-symbol" aria-hidden="true">‹‹</span></button>
-                  {currentPage < journalPages.length - 1 && <button type="button" className="journal-page-arrow journal-page-arrow--next" onClick={onNext} aria-label="Next page"><span className="journal-page-arrow-symbol" aria-hidden="true">››</span></button>}
+                  <button ref={navigationRef} type="button" className="journal-page-arrow journal-page-arrow--previous" onClick={onPrevious} aria-label={currentPage === 0 ? translations.journal.navigation.closeLabel : translations.journal.navigation.previousLabel}><span className="journal-page-arrow-symbol" aria-hidden="true">‹‹</span></button>
+                  {currentPage < journalPages.length - 1 && <button type="button" className="journal-page-arrow journal-page-arrow--next" onClick={onNext} aria-label={translations.journal.navigation.nextLabel}><span className="journal-page-arrow-symbol" aria-hidden="true">››</span></button>}
                 </>
               )}
             </div>
@@ -542,7 +546,7 @@ function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, 
     <div className={`journal-mobile-stage ${isOpen ? 'journal-mobile-stage--open' : ''}`}>
       <div className="journal-mobile-book">
         {!isOpen ? (
-          <button ref={coverRef} type="button" className="journal-cover journal-mobile-cover" onClick={onOpen} aria-label="Open Beyond the Code journal">
+          <button ref={coverRef} type="button" className="journal-cover journal-mobile-cover" onClick={onOpen} aria-label={translations.journal.cover.openLabel}>
             <span className="journal-spine" aria-hidden="true" />
             <span className="journal-cover-inner"><span className="journal-cover-title">Beyond<br />the code</span></span>
           </button>
@@ -553,8 +557,8 @@ function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, 
         )}
         {isOpen && !isTurning && (
           <>
-            <button ref={navigationRef} type="button" className="journal-page-arrow journal-page-arrow--previous" onClick={onPrevious} aria-label={currentPage === 0 ? 'Close journal' : 'Previous page'}><span className="journal-page-arrow-symbol" aria-hidden="true">‹‹</span></button>
-            {currentPage < journalPages.length - 1 && <button type="button" className="journal-page-arrow journal-page-arrow--next" onClick={onNext} aria-label="Next page"><span className="journal-page-arrow-symbol" aria-hidden="true">››</span></button>}
+            <button ref={navigationRef} type="button" className="journal-page-arrow journal-page-arrow--previous" onClick={onPrevious} aria-label={currentPage === 0 ? translations.journal.navigation.closeLabel : translations.journal.navigation.previousLabel}><span className="journal-page-arrow-symbol" aria-hidden="true">‹‹</span></button>
+            {currentPage < journalPages.length - 1 && <button type="button" className="journal-page-arrow journal-page-arrow--next" onClick={onNext} aria-label={translations.journal.navigation.nextLabel}><span className="journal-page-arrow-symbol" aria-hidden="true">››</span></button>}
           </>
         )}
       </div>
