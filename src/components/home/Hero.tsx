@@ -1,11 +1,13 @@
 import { useLayoutEffect } from 'react'
 import SectionTitle from '../ui/SectionTitle'
+import { useLanguage } from '../../i18n/useLanguage'
 import {
   consumeHomeIdentityTransition,
   isHomeIdentityTransitionPending,
 } from '../layout/HomeIdentityTransitionSignal'
 
 function Hero() {
+  const { translations } = useLanguage()
   const shouldAnimateIdentity = isHomeIdentityTransitionPending()
 
   useLayoutEffect(() => {
@@ -25,8 +27,8 @@ function Hero() {
         </div>
 
         <SectionTitle
-          title="Alba Vega"
-          description="I build thoughtful web experiences where clean engineering meets expressive design."
+          title={translations.home.name}
+          description={translations.home.description}
           titleClassName={shouldAnimateIdentity ? 'home-identity-enter' : undefined}
         />
 
@@ -61,7 +63,7 @@ function Hero() {
         </div>
 
         <p className="mt-6 text-base uppercase tracking-[0.25em] text-[var(--color-lavender)]">
-          frontend · full-stack · <span className="font-[Caveat] text-lg font-medium uppercase">CREATIVE</span>
+          {translations.home.roleDescriptors} <span className="font-[Caveat] text-lg font-medium uppercase">{translations.home.editorialLabel}</span>
         </p>
       </div>
     </section>

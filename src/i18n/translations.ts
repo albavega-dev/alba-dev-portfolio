@@ -10,6 +10,17 @@ const english: TranslationResources = {
     changeLanguage: 'Change language',
     currentLanguage: 'Current language',
   },
+  home: {
+    name: 'Alba Vega',
+    description: 'I build thoughtful web experiences where clean engineering meets expressive design.',
+    roleDescriptors: 'frontend · full-stack ·',
+    editorialLabel: 'CREATIVE',
+  },
+  footer: {
+    contactLinks: 'Contact links',
+    linkedinProfile: 'LinkedIn profile',
+    email: 'Send me an email',
+  },
 }
 
 const spanish: TranslationResources = {
@@ -21,6 +32,17 @@ const spanish: TranslationResources = {
     spanish: 'Español',
     changeLanguage: 'Cambiar idioma',
     currentLanguage: 'Idioma actual',
+  },
+  home: {
+    name: 'Alba Vega',
+    description: 'Experiencias web con un desarrollo cuidado y un diseño lleno de personalidad.',
+    roleDescriptors: 'frontend · full-stack ·',
+    editorialLabel: 'CREATIVA',
+  },
+  footer: {
+    contactLinks: 'Enlaces de contacto',
+    linkedinProfile: 'Perfil de LinkedIn',
+    email: 'Envíame un correo electrónico',
   },
 }
 
