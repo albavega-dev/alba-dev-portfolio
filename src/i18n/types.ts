@@ -21,4 +21,22 @@ export type TranslationResources = {
     linkedinProfile: string
     email: string
   }
+  about: {
+    whoIAm: string
+    introduction: {
+      paragraph1: string
+      paragraph2: string
+      paragraph3: string
+    }
+    profileImageAlt: string
+    toolkitTitle: string
+    categories: {
+      frontend: string
+      backendData: string
+      devopsCicd: string
+      toolsEcosystem: string
+      qualityTesting: string
+      aiAssistedDevelopment: string
+    }
+  }
 }
