@@ -77,6 +77,9 @@ export type TranslationResources = {
     spanish: string;
     changeLanguage: string;
     currentLanguage: string;
+    openMenu: string;
+    closeMenu: string;
+    navigationMenu: string;
   };
   home: {
     name: string;

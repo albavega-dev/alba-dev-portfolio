@@ -5,19 +5,20 @@ import BeyondTheCode from '../../components/about/BeyondTheCode'
 import { useMasonryGrid } from '../../components/about/useMasonryGrid'
 import { useLanguage } from '../../i18n/useLanguage'
 import '../../components/about/ToolkitLayout.css'
+import './About.css'
 
 function About() {
   const { translations } = useLanguage()
   const { isMeasured, placements, setItemRef } = useMasonryGrid(6)
 
   return (
-    <PageContainer>
+    <PageContainer className="about-page-container">
       <div className="mx-auto max-w-7xl">
         {/* =========================================
             WHO I AM
         ========================================= */}
 
-        <section className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
+        <section className="mt-0 md:mt-8 md:grid md:grid-cols-[1fr_auto] md:items-center md:gap-8">
           <div className="about-profile-card max-w-3xl">
             <h2 className="text-3xl font-semibold text-[var(--color-purple)]">
               {translations.about.whoIAm}
@@ -36,19 +37,13 @@ function About() {
             </p>
           </div>
 
-          {/* Animated Polaroid */}
-
-          <div className="flex justify-center py-6 md:justify-end">
+          <div className="hidden justify-center py-6 md:flex md:justify-end">
             <div className="polaroid-photo relative w-64 rotate-[3deg] bg-white p-3 pb-10 shadow-[4px_6px_18px_rgba(185,165,214,0.25)] sm:w-72 lg:w-80">
-
               <img
                 src="/images/profile.jpg"
                 alt={translations.about.profileImageAlt}
                 className="block h-auto w-full"
               />
-
-              {/* Washi tape */}
-
               <div
                 aria-hidden="true"
                 className="polaroid-tape pointer-events-none absolute -top-4 left-1/2 z-10 h-8 w-28"
@@ -290,6 +285,7 @@ function About() {
               </div>
             </div>
           </div>
+
         </section>
 
         {/* =========================================

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { IconChevronDown } from '@tabler/icons-react'
+import { IconChevronDown, IconMenu2, IconX } from '@tabler/icons-react'
 import { annotate } from 'rough-notation'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router'
 import { armHomeIdentityTransition } from './HomeIdentityTransitionSignal'
@@ -8,9 +8,12 @@ import { useLanguage } from '../../i18n/useLanguage'
 type AnnotatedNavLinkProps = {
   to: string
   children: ReactNode
+  mobile?: boolean
+  mobileOpen?: boolean
+  onClick?: () => void
 }
 
-function AnnotatedNavLink({ to, children }: AnnotatedNavLinkProps) {
+function AnnotatedNavLink({ to, children, mobile = false, mobileOpen = false, onClick }: AnnotatedNavLinkProps) {
   const textRef = useRef<HTMLSpanElement>(null)
   const annotationRef = useRef<ReturnType<typeof annotate> | null>(null)
   const [isHovered, setIsHovered] = useState(false)
@@ -57,7 +60,9 @@ function AnnotatedNavLink({ to, children }: AnnotatedNavLinkProps) {
   return (
     <NavLink
       to={to}
-      className="group relative inline-flex items-center text-lg text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-purple)] motion-reduce:transition-none"
+      onClick={onClick}
+      tabIndex={mobile ? (mobileOpen ? 0 : -1) : undefined}
+      className={({ isActive }) => `group relative inline-flex items-center text-lg text-[var(--color-text-secondary)] transition-colors hover:text-[var(--color-purple)] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-purple)] motion-reduce:transition-none ${mobile ? 'w-full rounded-sm px-3 py-2' : ''} ${mobile && isActive ? 'bg-[var(--color-pink-soft)] text-[var(--color-purple)]' : ''}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onFocus={() => setIsFocused(true)}
@@ -73,9 +78,40 @@ function Navbar() {
   const navigate = useNavigate()
   const { language, setLanguage, translations } = useLanguage()
   const [isHomeExiting, setIsHomeExiting] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuRendered, setIsMenuRendered] = useState(false)
   const [isLanguageOpen, setIsLanguageOpen] = useState(false)
+  const [isLanguageRendered, setIsLanguageRendered] = useState(false)
   const languageSelectorRef = useRef<HTMLDivElement>(null)
   const languageTriggerRef = useRef<HTMLButtonElement>(null)
+  const menuTriggerRef = useRef<HTMLButtonElement>(null)
+
+  useEffect(() => {
+    // Route changes can come from browser history as well as menu clicks.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setIsMenuOpen(false)
+  }, [location.pathname])
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 768px)')
+    const handleMediaChange = (event: MediaQueryListEvent) => {
+      if (event.matches) setIsMenuOpen(false)
+    }
+    mediaQuery.addEventListener('change', handleMediaChange)
+    return () => mediaQuery.removeEventListener('change', handleMediaChange)
+  }, [])
+
+  useEffect(() => {
+    if (!isMenuOpen) return
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+        menuTriggerRef.current?.focus()
+      }
+    }
+    document.addEventListener('keydown', handleKeyDown)
+    return () => document.removeEventListener('keydown', handleKeyDown)
+  }, [isMenuOpen])
 
   useEffect(() => {
     if (!isLanguageOpen) return
@@ -107,8 +143,8 @@ function Navbar() {
   const alternativeLanguages = availableLanguages.filter((option) => option !== language)
 
   return (
-    <nav className="relative sticky top-0 z-50 bg-[var(--color-background)] px-6 py-4">
-      <div className="relative flex min-h-9 w-full flex-wrap items-center justify-between gap-x-6 gap-y-2">
+    <nav className="relative sticky top-0 z-50 bg-[var(--color-background)] px-2 py-4 md:px-6">
+      <div className="relative flex min-h-9 w-full items-center justify-between gap-x-4 md:gap-x-6">
         {(location.pathname !== '/' || isHomeExiting) && (
           <Link
             to="/"
@@ -134,29 +170,45 @@ function Navbar() {
           </Link>
         )}
 
-        <div className="flex items-center gap-x-6 md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2">
+        <div className="hidden items-center gap-x-6 md:absolute md:left-1/2 md:top-1/2 md:flex md:-translate-x-1/2 md:-translate-y-1/2">
           <AnnotatedNavLink to="/about">{translations.navbar.about}</AnnotatedNavLink>
           <AnnotatedNavLink to="/cv">{translations.navbar.cv}</AnnotatedNavLink>
         </div>
 
-        <div ref={languageSelectorRef} className="relative z-10 w-16 shrink-0 origin-top rotate-[0.5deg] rounded-sm bg-[var(--color-lavender-soft)] p-1 shadow-[1px_2px_4px_rgba(105,84,119,0.14)] md:absolute md:right-0 md:top-1/2 md:-translate-y-[16px]" role="group" aria-label={translations.navbar.languageLabel}>
+        <div className="ml-auto flex shrink-0 items-center gap-2 md:ml-0 md:absolute md:right-0 md:top-1/2 md:-translate-y-[16px]">
+        <div ref={languageSelectorRef} className="relative z-50 h-10 w-16 origin-top rotate-[0.5deg] rounded-sm bg-[var(--color-lavender-soft)] p-1 shadow-[1px_2px_4px_rgba(105,84,119,0.14)] md:z-10 md:h-auto" role="group" aria-label={translations.navbar.languageLabel}>
             <button
               ref={languageTriggerRef}
               type="button"
               aria-label={languageTriggerLabel}
               aria-expanded={isLanguageOpen}
               aria-controls="navbar-language-options"
-              onClick={() => setIsLanguageOpen((open) => !open)}
-              className="flex w-full items-center justify-start gap-1 rounded-sm bg-transparent p-0.5 transition-[transform] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-purple)] hover:-translate-y-px motion-reduce:transform-none motion-reduce:transition-none"
+              onClick={() => {
+                if (isLanguageOpen) {
+                  setIsLanguageOpen(false)
+                } else {
+                  setIsLanguageRendered(true)
+                  setIsLanguageOpen(true)
+                }
+              }}
+              className="group flex w-full items-center justify-start gap-1 rounded-sm bg-transparent p-0.5 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-purple)]"
             >
               <span className="shrink-0 rounded-[2px] bg-white p-0.5 shadow-[1px_2px_4px_rgba(105,84,119,0.16)]">
                 <img src={`/images/flags/${languageFlag}.svg`} alt="" aria-hidden="true" className="block h-[21px] w-7 rounded-[2px] object-cover" />
               </span>
-              <IconChevronDown size={13} stroke={1.7} aria-hidden="true" className={`text-[var(--color-purple)] transition-transform motion-reduce:transition-none ${isLanguageOpen ? 'rotate-180' : ''}`} />
+              <IconChevronDown size={13} stroke={1.7} aria-hidden="true" className={`text-[var(--color-purple)] transition-transform group-hover:-translate-y-px motion-reduce:transition-none motion-reduce:transform-none ${isLanguageOpen ? 'rotate-180' : ''}`} />
             </button>
 
-          <div id="navbar-language-options" hidden={!isLanguageOpen} className={`overflow-hidden transition-[max-height,opacity] duration-150 motion-reduce:transition-none ${isLanguageOpen ? 'max-h-20 opacity-100' : 'max-h-0 opacity-0'}`}>
-            <div className="flex flex-col items-start gap-1 pt-1">
+          <div
+            id="navbar-language-options"
+            hidden={!isLanguageRendered}
+            aria-hidden={!isLanguageOpen}
+            onAnimationEnd={() => {
+              if (!isLanguageOpen) setIsLanguageRendered(false)
+            }}
+            className={`absolute right-0 top-full z-50 mt-[3px] w-full overflow-hidden rounded-sm bg-[var(--color-lavender-soft)] p-1 shadow-[1px_3px_8px_rgba(105,84,119,0.18)] md:static md:mt-0 md:w-auto md:rounded-none md:bg-[var(--color-lavender-soft)] md:p-0 md:shadow-none ${isLanguageOpen ? 'cv-mobile-language-dropdown--open' : 'cv-mobile-language-dropdown--closing'}`}
+          >
+            <div className="flex flex-col items-start gap-1 md:pt-1">
               {alternativeLanguages.map((option) => {
                 const optionName = option === 'en' ? translations.navbar.english : translations.navbar.spanish
                 const optionFlag = option === 'en' ? 'gb' : 'es'
@@ -172,7 +224,7 @@ function Navbar() {
                       setIsLanguageOpen(false)
                       languageTriggerRef.current?.focus()
                     }}
-                    className="rounded-[2px] bg-transparent p-0.5 transition-[transform] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-purple)] hover:-translate-y-px motion-reduce:transform-none motion-reduce:transition-none"
+                    className="flex min-h-8 w-full items-center rounded-[2px] bg-transparent p-1 transition-[background-color,transform] focus-visible:bg-[var(--color-pink-soft)] focus-visible:outline-2 focus-visible:outline-offset-1 focus-visible:outline-[var(--color-purple)] hover:bg-[var(--color-pink-soft)] hover:-translate-y-px motion-reduce:transform-none motion-reduce:transition-none md:inline-flex md:min-h-0 md:w-auto md:bg-transparent md:p-0.5 md:hover:bg-transparent md:focus-visible:bg-transparent"
                   >
                     <span className={`block shrink-0 rounded-[2px] bg-white p-0.5 shadow-[1px_2px_4px_rgba(105,84,119,0.16)] ${option === 'en' ? 'rotate-[-2deg]' : 'rotate-[2deg]'}`}>
                       <img src={`/images/flags/${optionFlag}.svg`} alt="" aria-hidden="true" className="block h-[21px] w-7 rounded-[2px] object-cover" />
@@ -183,9 +235,106 @@ function Navbar() {
             </div>
           </div>
         </div>
+
+        <button
+          ref={menuTriggerRef}
+          type="button"
+          aria-label={isMenuOpen ? translations.navbar.closeMenu : translations.navbar.openMenu}
+          aria-expanded={isMenuOpen}
+          aria-controls="navbar-mobile-menu"
+          onClick={() => {
+            if (isMenuOpen) {
+              setIsMenuOpen(false)
+            } else {
+              setIsMenuRendered(true)
+              setIsMenuOpen(true)
+            }
+          }}
+          className="inline-flex h-10 w-10 items-center justify-center rounded-sm bg-[var(--color-lavender-soft)] text-[var(--color-purple)] shadow-[1px_2px_4px_rgba(105,84,119,0.14)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-purple)] md:hidden"
+        >
+          {isMenuOpen ? <IconX size={22} stroke={1.7} aria-hidden="true" /> : <IconMenu2 size={22} stroke={1.7} aria-hidden="true" />}
+        </button>
+        </div>
+      </div>
+
+      <div
+        id="navbar-mobile-menu"
+        hidden={!isMenuRendered}
+        aria-hidden={!isMenuOpen}
+        onAnimationEnd={() => {
+          if (!isMenuOpen) setIsMenuRendered(false)
+        }}
+        className={`absolute left-0 right-0 top-full z-40 bg-[var(--color-background)] px-4 pb-4 pt-3 shadow-[0_5px_12px_rgba(105,84,119,0.12)] md:hidden ${isMenuOpen ? 'cv-mobile-menu--open' : 'cv-mobile-menu--closing'}`}
+        role="navigation"
+        aria-label={translations.navbar.navigationMenu}
+      >
+        <div className="flex flex-col gap-3">
+          <AnnotatedNavLink to="/about" onClick={() => setIsMenuOpen(false)} mobile mobileOpen={isMenuOpen}>{translations.navbar.about}</AnnotatedNavLink>
+          <AnnotatedNavLink to="/cv" onClick={() => setIsMenuOpen(false)} mobile mobileOpen={isMenuOpen}>{translations.navbar.cv}</AnnotatedNavLink>
+        </div>
       </div>
 
       <style>{`
+        @keyframes cv-mobile-language-open {
+          from { opacity: 0; transform: translateY(-4px) scale(0.98); }
+          to { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        @keyframes cv-mobile-language-close {
+          from { opacity: 1; transform: translateY(0) scale(1); }
+          to { opacity: 0; transform: translateY(-3px) scale(0.98); }
+        }
+
+        @keyframes cv-mobile-menu-open {
+          from { opacity: 0; transform: translateY(-8px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes cv-mobile-menu-close {
+          from { opacity: 1; transform: translateY(0); }
+          to { opacity: 0; transform: translateY(-6px); }
+        }
+
+        @media (max-width: 767px) {
+          .cv-mobile-language-dropdown--open {
+            animation: cv-mobile-language-open 160ms ease-out both;
+          }
+
+          .cv-mobile-language-dropdown--closing {
+            animation: cv-mobile-language-close 110ms ease-in both;
+            pointer-events: none;
+          }
+
+          .cv-mobile-menu--open {
+            animation: cv-mobile-menu-open 220ms ease-out both;
+          }
+
+          .cv-mobile-menu--closing {
+            animation: cv-mobile-menu-close 140ms ease-in both;
+            pointer-events: none;
+          }
+        }
+
+        @media (min-width: 768px) {
+          .cv-mobile-language-dropdown--closing {
+            display: none;
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .cv-mobile-language-dropdown--open,
+          .cv-mobile-language-dropdown--closing,
+          .cv-mobile-menu--open,
+          .cv-mobile-menu--closing {
+            animation: none;
+          }
+
+          .cv-mobile-language-dropdown--closing {
+            animation: none;
+            display: none;
+          }
+        }
+
         @keyframes cv-navbar-identity-exit {
           from { transform: translateX(0); }
           to { transform: translateX(-100vw); }

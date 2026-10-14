@@ -382,13 +382,46 @@
     }
 }
 @media (max-width: 767px) {
+    .cv-experience-timeline-shell {
+        --cv-mobile-thread-axis: 4px;
+    }
+    .cv-timeline-thread {
+        left: calc(var(--cv-mobile-thread-axis) - 24px);
+    }
+    .cv-experience-timeline .vertical-timeline-element-icon {
+        width: 3.25rem;
+        height: 3.25rem;
+        margin-left: calc(var(--cv-mobile-thread-axis) - 22px);
+        z-index: 3;
+    }
+    .cv-experience-timeline .vertical-timeline-element-icon::before {
+        width: 3rem;
+        height: 3rem;
+    }
+    .cv-experience-timeline .vertical-timeline-element-icon img {
+        width: 3.25rem;
+        height: 3.25rem;
+    }
+    .cv-experience-timeline .vertical-timeline-element-content {
+        margin-left: 32px;
+        padding: 1rem 1rem 1.25rem 1.4rem;
+        background: var(--color-surface);
+        border: 1px dashed transparent;
+    }
+    .cv-experience-timeline .cv-timeline-content--pink {
+        border-color: var(--color-pink);
+    }
+    .cv-experience-timeline .cv-timeline-content--lavender {
+        border-color: var(--color-lavender);
+    }
     .cv-education-transition {
         margin-left: 60px;
     }
     .cv-education-marker,
     .cv-early-marker,
     .cv-employer-marker {
-        left: -72px;
+        left: calc(var(--cv-mobile-thread-axis) - 84px);
+        z-index: 3;
     }
     .cv-experience {
         padding: 3rem 0 4rem;

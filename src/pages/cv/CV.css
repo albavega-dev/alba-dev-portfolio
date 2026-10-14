@@ -401,6 +401,9 @@
   }
 }
 @media (max-width: 767px) {
+  .cv-page-container {
+      padding-top: 1.5rem;
+  }
   .cv-page {
       padding: 0 0 4rem;
   }
