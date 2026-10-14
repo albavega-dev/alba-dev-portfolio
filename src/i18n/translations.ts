@@ -11,6 +11,9 @@ const english: TranslationResources = {
     spanish: 'Spanish',
     changeLanguage: 'Change language',
     currentLanguage: 'Current language',
+    openMenu: 'Open navigation menu',
+    closeMenu: 'Close navigation menu',
+    navigationMenu: 'Navigation menu',
   },
   home: {
     name: 'Alba Vega',
@@ -212,6 +215,9 @@ const spanish: TranslationResources = {
     spanish: 'Español',
     changeLanguage: 'Cambiar idioma',
     currentLanguage: 'Idioma actual',
+    openMenu: 'Abrir menú de navegación',
+    closeMenu: 'Cerrar menú de navegación',
+    navigationMenu: 'Menú de navegación',
   },
   home: {
     name: 'Alba Vega',
