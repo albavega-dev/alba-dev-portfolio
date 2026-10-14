@@ -2,6 +2,7 @@
 import type { ReactNode } from 'react'
 import { UiCreativeCodingContent } from './UiCreativeCodingContent'
 import { MusicContent } from './MusicContent'
+import { useLanguage } from '../../i18n/useLanguage'
 
 
 type JournalPageProps = {
@@ -31,23 +32,16 @@ function JournalPage({
 
 
 export function AboutPage() {
+  const { translations } = useLanguage()
   return (
-    <JournalPage title="Dear diary...">
+    <JournalPage title={translations.journal.pages.dearDiary.title}>
       <div className="journal-writing">
         <p>
-          When I'm not working, I'm usually playing video games,
-          reading, writing reviews or getting caught up in
-          whatever has sparked my interest lately. I've always
-          loved stories, whether I'm experiencing them through
-          a game, reading a book or writing about them myself.
+          {translations.journal.pages.dearDiary.paragraph1}
         </p>
 
         <p>
-          I also have a background in music and a keen interest
-          in art and visual design. I enjoy experimenting with
-          different creative ideas and I can spend an unreasonable
-          amount of time tweaking a layout until it looks
-          exactly how I imagined it.
+          {translations.journal.pages.dearDiary.paragraph2}
         </p>
       </div>
     </JournalPage>
@@ -56,16 +50,16 @@ export function AboutPage() {
 
 
 export function InterestsIntroPage() {
+  const { translations } = useLanguage()
   return (
     <JournalPage
-        title="My interests"
+        title={translations.journal.pages.interests.title}
         variant="intro"
     >
       <div className="journal-intro-divider" />
 
       <p className="journal-intro-description">
-        There's more to life than debugging.
-        Apparently.
+        {translations.journal.pages.interests.description}
       </p>
 
       <div className="journal-intro-scrapbook">
@@ -75,11 +69,11 @@ export function InterestsIntroPage() {
         />
 
         <span className="journal-intro-note-label">
-            PERSONAL ARCHIVES
+            {translations.journal.pages.interests.noteLabel}
         </span>
 
         <p className="journal-intro-note">
-            A few things that didn't make it into the README.
+            {translations.journal.pages.interests.note}
         </p>
     </div>
     </JournalPage>
@@ -125,11 +119,13 @@ function InterestPage({
 
 
 export function GamingPage() {
+  const { translations } = useLanguage()
+  const gaming = translations.journal.pages.gaming
   return (
     <JournalPage
       title={
         <span className="journal-gaming-title">
-          <span>Gaming</span>
+          <span>{gaming.title}</span>
 
           <svg
             viewBox="0 0 24 24"
@@ -194,7 +190,7 @@ export function GamingPage() {
 
             <div className="journal-gaming-identity">
               <span className="journal-gaming-label">
-                CHARACTER NAME
+                {gaming.labels.characterName}
               </span>
 
               <span className="journal-gaming-name" aria-label="Alba">
@@ -206,11 +202,11 @@ export function GamingPage() {
 
               <div className="journal-gaming-class">
                 <span className="journal-gaming-label">
-                    CLASS:
+                    {gaming.labels.class}
                 </span>
 
                 <span className="journal-gaming-class-value">
-                    Healer
+                    {gaming.classValue}
                 </span>
                 </div>
             </div>
@@ -218,27 +214,21 @@ export function GamingPage() {
 
             <div className="journal-gaming-section">
             <span className="journal-gaming-label">
-                FAVOURITE GENRES
+                {gaming.labels.favouriteGenres}
             </span>
 
             <ul className="journal-gaming-genres">
-                <li>RPGs</li>
-                <li>Visual novels</li>
-                <li>MMOs</li>
+                {gaming.genres.map((genre) => <li key={genre}>{genre}</li>)}
             </ul>
             </div>
 
           <div className="journal-gaming-section">
             <span className="journal-gaming-label">
-              CHARACTER BACKSTORY
+              {gaming.labels.backstory}
             </span>
 
             <p className="journal-gaming-description">
-              I've been playing video games for as long as
-              I can remember. I particularly enjoy
-              story-driven games, RPGs and visual novels,
-              but I also love the challenge of high-end
-              content in MMOs.
+              {gaming.backstory}
             </p>
           </div>
 
@@ -250,23 +240,25 @@ export function GamingPage() {
 
 
 export function LiteraturePage() {
+  const { translations } = useLanguage()
+  const literature = translations.journal.pages.literature
   return (
-    <JournalPage title="Literature">
+    <JournalPage title={literature.title}>
       <div className="journal-literature-bookmark" aria-hidden="true">
         <span />
       </div>
       <div className="journal-literature">
         <p className="journal-literature-intro">
-          Reading is one of my favourite hobbies. My taste in books is pretty varied, although I have a particular soft spot for science fiction, fantasy and horror.
+          {literature.intro}
         </p>
-        <div className="journal-literature-journal" aria-label="Reading journal notes">
+        <div className="journal-literature-journal" aria-label={literature.notesLabel}>
           <div className="journal-literature-paper">
-            <p>I don't need every story to have a happy ending. I just need the ending to make sense.</p>
+            <p>{literature.endingsNote}</p>
           </div>
 
           <div className="journal-literature-sticky-outer">
             <div className="journal-literature-sticky">
-              <span>Apparently, I have a thing for fictional worlds where everything goes wrong.</span>
+              <span>{literature.stickyNote}</span>
             </div>
           </div>
 
@@ -278,13 +270,15 @@ export function LiteraturePage() {
 }
 
 function ReviewComment() {
-  const text = 'I also enjoy writing reviews and sharing my thoughts on the stories I experience, from books to video games.'
+  const { translations } = useLanguage()
+  const literature = translations.journal.pages.literature
+  const text = literature.reviewText
 
   return (
-    <div className="journal-literature-comment" aria-label="Writing reviews note">
+    <div className="journal-literature-comment" aria-label={literature.reviewsNoteLabel}>
       <div className="journal-literature-comment-meta">
         <span className="journal-literature-comment-avatar" aria-hidden="true">A</span>
-        <span>Alba · now</span>
+        <span>Alba · {literature.metadataNow}</span>
       </div>
       <p className="journal-literature-comment-typing" aria-label={text}>
         {text.split('').map((character, index) => (
@@ -297,7 +291,7 @@ function ReviewComment() {
           </span>
         ))}
       </p>
-      <button type="button">Send</button>
+      <button type="button">{literature.send}</button>
     </div>
   )
 }
@@ -315,8 +309,9 @@ export function WritingPage() {
 
 
 export function DesignPage() {
+  const { translations } = useLanguage()
   return (
-    <JournalPage title="UI Design & Creative Coding">
+    <JournalPage title={translations.journal.pages.uiDesign.title}>
       <UiCreativeCodingContent />
     </JournalPage>
   )
@@ -324,8 +319,9 @@ export function DesignPage() {
 
 
 export function MusicPage() {
+  const { translations } = useLanguage()
   return (
-    <JournalPage title="Music">
+    <JournalPage title={translations.journal.pages.music.title}>
       <MusicContent />
     </JournalPage>
   )

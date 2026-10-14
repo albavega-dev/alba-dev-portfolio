@@ -2,10 +2,11 @@ import { render, screen } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
 
 import CV from '../src/pages/cv/CV'
+import { LanguageProvider } from '../src/i18n/LanguageProvider'
 
 describe('CV downloads', () => {
   it('exposes the English and Spanish PDF downloads', () => {
-    render(<CV />)
+    render(<LanguageProvider><CV /></LanguageProvider>)
 
     const english = screen.getByRole('link', { name: /Download CV \(English\)/i })
     const spanish = screen.getByRole('link', { name: /Descargar CV \(Español\)/i })

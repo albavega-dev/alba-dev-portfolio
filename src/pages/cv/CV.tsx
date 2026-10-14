@@ -2,23 +2,26 @@ import PageContainer from '../../components/layout/PageContainer'
 import { IconChartLine, IconDeviceDesktopCode, IconDownload, IconWorld } from '@tabler/icons-react'
 import CVExperience from './CVExperience'
 import './CV.css'
+import { useLanguage } from '../../i18n/useLanguage'
 
 function CV() {
+  const { translations } = useLanguage()
+  const cv = translations.cv
   return (
     <PageContainer>
       <main className="cv-page">
         <section className="cv-hero">
           <header className="cv-header">
           <div className="cv-header-copy">
-            <p className="cv-kicker"><span>Professional overview</span></p>
-            <h1>Curriculum Vitae</h1>
-            <p className="cv-intro">5+ years building and evolving enterprise applications, with a strong focus on frontend development.</p>
+            <p className="cv-kicker"><span>{cv.hero.kicker}</span></p>
+            <h1>{cv.hero.title}</h1>
+            <p className="cv-intro">{cv.hero.intro}</p>
             <dl className="cv-meta">
-              <div><dt><IconDeviceDesktopCode className="cv-meta-icon" size="1.35rem" stroke={1.5} aria-hidden="true" />Role</dt><dd>Full-Stack Developer</dd></div>
-              <div><dt><IconChartLine className="cv-meta-icon" size="1.35rem" stroke={1.5} aria-hidden="true" />Experience</dt><dd>5+ years</dd></div>
-              <div><dt><IconWorld className="cv-meta-icon" size="1.35rem" stroke={1.5} aria-hidden="true" />English</dt><dd>C1 <span>(Cambridge)</span></dd></div>
+              <div><dt><IconDeviceDesktopCode className="cv-meta-icon" size="1.35rem" stroke={1.5} aria-hidden="true" />{cv.hero.roleLabel}</dt><dd>{cv.hero.roleValue}</dd></div>
+              <div><dt><IconChartLine className="cv-meta-icon" size="1.35rem" stroke={1.5} aria-hidden="true" />{cv.hero.experienceLabel}</dt><dd>{cv.hero.experienceValue}</dd></div>
+              <div><dt><IconWorld className="cv-meta-icon" size="1.35rem" stroke={1.5} aria-hidden="true" />{cv.hero.languageLabel}</dt><dd>{cv.hero.languageValue} <span>({cv.hero.institution})</span></dd></div>
             </dl>
-            <div className="cv-downloads" aria-label="CV downloads">
+            <div className="cv-downloads" aria-label={cv.hero.downloadsLabel}>
               <div className="cv-download-links">
                 <a href="/Alba_Vega_CV_EN.pdf" download="Alba_Vega_CV_EN.pdf">Download CV (English) <IconDownload size={17} stroke={1.7} aria-hidden="true" /></a>
                 <a href="/Alba_Vega_CV_ES.pdf" download="Alba_Vega_CV_ES.pdf">Descargar CV (Español) <IconDownload size={17} stroke={1.7} aria-hidden="true" /></a>

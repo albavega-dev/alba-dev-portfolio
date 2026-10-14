@@ -3,9 +3,11 @@ import PageContainer from '../../components/layout/PageContainer'
 import SkillIcon from '../../components/ui/SkillIcon'
 import BeyondTheCode from '../../components/about/BeyondTheCode'
 import { useMasonryGrid } from '../../components/about/useMasonryGrid'
+import { useLanguage } from '../../i18n/useLanguage'
 import '../../components/about/ToolkitLayout.css'
 
 function About() {
+  const { translations } = useLanguage()
   const { isMeasured, placements, setItemRef } = useMasonryGrid(6)
 
   return (
@@ -18,19 +20,19 @@ function About() {
         <section className="mt-8 grid gap-8 md:grid-cols-[1fr_auto] md:items-center">
           <div className="about-profile-card max-w-3xl">
             <h2 className="text-3xl font-semibold text-[var(--color-purple)]">
-              Who I am
+              {translations.about.whoIAm}
             </h2>
 
             <p className="mt-4 text-base leading-8 text-[var(--color-text-secondary)]">
-              I'm Alba, a full-stack developer with a strong frontend focus. I've spent most of my professional career working with Angular and TypeScript, alongside Java and Spring Boot on the backend.
+              {translations.about.introduction.paragraph1}
             </p>
 
             <p className="mt-4 text-base leading-8 text-[var(--color-text-secondary)]">
-              I enjoy working on interfaces and turning ideas into something that actually feels good to use. I care about clean code, but I also care about how things look, how they feel and all those little details that make an interface more enjoyable.
+              {translations.about.introduction.paragraph2}
             </p>
 
             <p className="mt-4 text-base leading-8 text-[var(--color-text-secondary)]">
-              Most of my professional experience comes from large corporate projects and Agile teams, but I’ve also done my fair share of learning on my own, experimenting with new technologies and figuring things out as I go.
+              {translations.about.introduction.paragraph3}
             </p>
           </div>
 
@@ -41,7 +43,7 @@ function About() {
 
               <img
                 src="/images/profile.jpg"
-                alt="Alba, full-stack developer"
+                alt={translations.about.profileImageAlt}
                 className="block h-auto w-full"
               />
 
@@ -71,7 +73,7 @@ function About() {
 
         <section className="mt-20">
           <h2 className="text-[1.75rem] font-semibold text-[var(--color-purple)]">
-            My Developer Toolkit
+            {translations.about.toolkitTitle}
           </h2>
           <div className={`mt-10 grid grid-cols-1 items-start gap-x-12 gap-y-14 lg:grid-cols-2 ${isMeasured ? 'toolkit-masonry-ready' : ''}`}>
 
@@ -80,7 +82,7 @@ function About() {
             <div ref={setItemRef(0)} className="toolkit-card min-w-0" style={placements[0]}>
               <div className="relative w-full rotate-[-1deg] border border-dashed border-[var(--color-pink)] bg-[var(--color-surface)] p-6 pb-8 shadow-[4px_5px_0_rgba(223,166,195,0.18)] [--skill-circle-color:var(--color-lavender)]">
                 <span className="absolute -top-3 left-6 bg-[var(--color-background)] px-2 text-sm uppercase tracking-[0.2em] text-[var(--color-pink)]">
-                  Frontend
+                  {translations.about.categories.frontend}
                 </span>
 
                 <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-3 sm:grid-cols-3 xl:grid-cols-4">
@@ -119,7 +121,7 @@ function About() {
             <div ref={setItemRef(1)} className="toolkit-card min-w-0" style={placements[1]}>
               <div className="relative w-full rotate-[1deg] border border-dashed border-[var(--color-lavender)] bg-[var(--color-surface)] p-6 pb-8 shadow-[-4px_5px_0_rgba(185,165,214,0.18)] [--skill-circle-color:var(--color-pink)]">
                 <span className="absolute -top-3 right-6 bg-[var(--color-background)] px-2 text-sm uppercase tracking-[0.2em] text-[var(--color-lavender)]">
-                  Backend & Data
+                  {translations.about.categories.backendData}
                 </span>
 
                 <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-3 sm:grid-cols-3 xl:grid-cols-4">
@@ -164,7 +166,7 @@ function About() {
             <div ref={setItemRef(2)} className="toolkit-card min-w-0" style={placements[2]}>
               <div className="relative w-full rotate-[-1deg] border border-dashed border-[var(--color-lavender)] bg-[var(--color-surface)] p-6 pb-8 shadow-[4px_5px_0_rgba(185,165,214,0.18)] [--skill-circle-color:var(--color-pink)]">
                 <span className="absolute -top-3 left-6 bg-[var(--color-background)] px-2 text-sm uppercase tracking-[0.2em] text-[var(--color-lavender)]">
-                  DevOps & CI/CD
+                  {translations.about.categories.devopsCicd}
                 </span>
 
                 <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-3 sm:grid-cols-3 xl:grid-cols-4">
@@ -188,7 +190,7 @@ function About() {
             <div ref={setItemRef(3)} className="toolkit-card min-w-0" style={placements[3]}>
               <div className="relative w-full rotate-[1deg] border border-dashed border-[var(--color-pink)] bg-[var(--color-surface)] p-6 pb-8 shadow-[-4px_5px_0_rgba(223,166,195,0.18)] [--skill-circle-color:var(--color-lavender)]">
                 <span className="absolute -top-3 right-6 bg-[var(--color-background)] px-2 text-sm uppercase tracking-[0.2em] text-[var(--color-pink)]">
-                  Tools & Ecosystem
+                  {translations.about.categories.toolsEcosystem}
                 </span>
 
                 <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-3 sm:grid-cols-3 xl:grid-cols-4">
@@ -217,7 +219,7 @@ function About() {
             <div ref={setItemRef(4)} className="toolkit-card min-w-0" style={placements[4]}>
               <div className="relative w-full rotate-[1deg] border border-dashed border-[var(--color-pink)] bg-[var(--color-surface)] p-6 pb-8 shadow-[-4px_5px_0_rgba(223,166,195,0.18)] [--skill-circle-color:var(--color-lavender)]">
                 <span className="absolute -top-3 right-6 bg-[var(--color-background)] px-2 text-sm uppercase tracking-[0.2em] text-[var(--color-pink)]">
-                  Quality & Testing
+                  {translations.about.categories.qualityTesting}
                 </span>
 
                 <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-3 sm:grid-cols-3 xl:grid-cols-4">
@@ -260,7 +262,7 @@ function About() {
             <div ref={setItemRef(5)} className="toolkit-card min-w-0" style={placements[5]}>
               <div className="relative w-full rotate-[-1deg] border border-dashed border-[var(--color-lavender)] bg-[var(--color-surface)] p-6 pb-8 shadow-[4px_5px_0_rgba(185,165,214,0.18)] [--skill-circle-color:var(--color-pink)]">
                 <span className="absolute -top-3 left-6 bg-[var(--color-background)] px-2 text-sm uppercase tracking-[0.2em] text-[var(--color-lavender)]">
-                  AI-Assisted Development
+                  {translations.about.categories.aiAssistedDevelopment}
                 </span>
 
                 <div className="grid grid-cols-2 gap-x-6 gap-y-6 pt-3 sm:grid-cols-3 xl:grid-cols-4">

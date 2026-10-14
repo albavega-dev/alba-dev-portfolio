@@ -1,0 +1,4 @@
+The SVG flag artwork in this directory is from flag-icons by lipis,
+licensed under the MIT License.
+
+Source: https://github.com/lipis/flag-icons
