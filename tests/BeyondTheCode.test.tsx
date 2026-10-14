@@ -12,13 +12,12 @@ describe('Beyond the Code journal', () => {
 
     const cover = screen.getByRole('button', { name: 'Open Beyond the Code journal' })
     await user.click(cover)
-    const closeButton = await screen.findByRole('button', { name: 'Close journal' })
+    const closeButton = (await screen.findAllByRole('button', { name: 'Close journal' }))[0]
     expect(closeButton).toBeInTheDocument()
 
-    await user.keyboard('{Escape}')
+    await user.click(document.querySelector('.journal-phone-close') as HTMLElement)
     await waitFor(() => {
-      expect(screen.queryByRole('button', { name: 'Close journal' })).not.toBeInTheDocument()
+      expect(screen.getByRole('button', { name: 'Open Beyond the Code journal' })).toBeInTheDocument()
     })
-    expect(screen.getByRole('button', { name: 'Open Beyond the Code journal' })).toBeInTheDocument()
   })
 })

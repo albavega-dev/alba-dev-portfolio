@@ -268,6 +268,10 @@ function BeyondTheCode() {
     turnTo(isSinglePage ? currentPage - 1 : currentSpread === 0 ? -1 : (currentSpread - 1) * 2)
   }
 
+  const closeJournal = () => {
+    if (!isTurning && currentPage >= 0) turnTo(-1)
+  }
+
   useEffect(() => {
     if (!phoneReaderOpen) return
     const handleEscape = (event: KeyboardEvent) => {
@@ -285,7 +289,7 @@ function BeyondTheCode() {
     return (
       <section className="mt-24 pb-16" aria-labelledby="beyond-the-code-title">
         <h2 id="beyond-the-code-title" className="sr-only">{translations.journal.sectionTitle}</h2>
-        <MobileJournal currentPage={currentPage} lastOpenPage={lastOpenPage} isTurning={isTurning} isPhone={isPhone} onOpen={openJournal} onNext={nextPage} onPrevious={previousPage} coverRef={coverRef} navigationRef={mobileNavigationRef} />
+        <MobileJournal currentPage={currentPage} lastOpenPage={lastOpenPage} isTurning={isTurning} isPhone={isPhone} onOpen={openJournal} onNext={nextPage} onPrevious={previousPage} onClose={closeJournal} coverRef={coverRef} navigationRef={mobileNavigationRef} />
       </section>
     )
   }
@@ -440,11 +444,12 @@ type MobileJournalProps = {
   onOpen: (event: MouseEvent<HTMLButtonElement>) => void
   onNext: () => void
   onPrevious: () => void
+  onClose: () => void
   coverRef: RefObject<HTMLButtonElement | null>
   navigationRef: RefObject<HTMLButtonElement | null>
 }
 
-function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, onNext, onPrevious, coverRef, navigationRef }: MobileJournalProps) {
+function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, onNext, onPrevious, onClose, coverRef, navigationRef }: MobileJournalProps) {
   const { translations } = useLanguage()
   const isOpen = currentPage >= 0
   const isClosing = isPhone && !isOpen && isTurning
@@ -511,7 +516,7 @@ function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, 
           <div className="journal-mobile-book">
             <button ref={coverRef} type="button" className="journal-cover journal-mobile-cover" onClick={onOpen} aria-label={translations.journal.cover.openLabel}>
               <span className="journal-spine" aria-hidden="true" />
-              <span className="journal-cover-inner"><span className="journal-cover-title">Beyond<br />the code</span></span>
+              <span className="journal-cover-inner"><span className="journal-cover-title">{translations.journal.cover.title.split(' ')[0]}<br />{translations.journal.cover.title.split(' ').slice(1).join(' ')}</span></span>
             </button>
           </div>
         </div>
@@ -527,6 +532,7 @@ function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, 
                 onPointerCancel={handlePointerCancel}
                 onLostPointerCapture={handleLostPointerCapture}
               >
+                {isOpen && !isClosing && <button type="button" className="journal-phone-close" onClick={onClose} aria-label={translations.journal.navigation.closeLabel}>×</button>}
                 {page.render()}
               </div>
               {isOpen && !isTurning && (
@@ -548,7 +554,7 @@ function MobileJournal({ currentPage, lastOpenPage, isTurning, isPhone, onOpen, 
         {!isOpen ? (
           <button ref={coverRef} type="button" className="journal-cover journal-mobile-cover" onClick={onOpen} aria-label={translations.journal.cover.openLabel}>
             <span className="journal-spine" aria-hidden="true" />
-            <span className="journal-cover-inner"><span className="journal-cover-title">Beyond<br />the code</span></span>
+            <span className="journal-cover-inner"><span className="journal-cover-title">{translations.journal.cover.title.split(' ')[0]}<br />{translations.journal.cover.title.split(' ').slice(1).join(' ')}</span></span>
           </button>
         ) : (
           <div className={`journal-mobile-page ${isTurning ? 'journal-mobile-page--turning' : ''}`}>

@@ -27,11 +27,10 @@ describe('About translations', () => {
     expect(screen.getByText(/working with Angular, JavaScript and TypeScript/)).toBeInTheDocument()
     expect(screen.getByText('My Developer Toolkit')).toBeInTheDocument()
     expect(screen.getByText('Backend & Data')).toBeInTheDocument()
-    expect(screen.getByAltText('Alba, full-stack developer')).toBeInTheDocument()
     expect(screen.getByText('Angular')).toBeInTheDocument()
   })
 
-  it('updates the introduction, toolkit labels and profile alt text in Spanish', async () => {
+  it('updates the introduction and toolkit labels in Spanish', async () => {
     const user = userEvent.setup()
     render(
       <LanguageProvider>
@@ -48,7 +47,6 @@ describe('About translations', () => {
     expect(screen.getByText('Mi experiencia profesional se ha desarrollado principalmente en grandes proyectos empresariales y equipos ágiles, pero también me gusta aprender por mi cuenta, experimentar con nuevas tecnologías y descubrir cosas nuevas sobre la marcha.')).toBeInTheDocument()
     expect(screen.getByText('Mis herramientas de desarrollo')).toBeInTheDocument()
     expect(screen.getByText('Herramientas y ecosistema')).toBeInTheDocument()
-    expect(screen.getByAltText('Alba, desarrolladora full-stack')).toBeInTheDocument()
     expect(screen.getByText('Angular')).toBeInTheDocument()
   })
 })

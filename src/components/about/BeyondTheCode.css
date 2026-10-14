@@ -2739,6 +2739,36 @@
       min-height: 0;
       height: 100%;
   }
+  .journal-phone-close {
+      position: absolute;
+      top: .5rem;
+      right: .5rem;
+      z-index: 5;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      background: transparent;
+      color: var(--color-purple);
+      font-size: 1.6rem;
+      line-height: 1;
+      transition: color .16s ease, transform .16s ease;
+  }
+  .journal-phone-close:hover {
+      color: var(--color-pink);
+      transform: translateY(-1px);
+  }
+  .journal-phone-close:focus-visible {
+      outline: 2px solid var(--color-purple);
+      outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .journal-phone-close {
+      transition: none;
+    }
+  }
   .journal-mobile-stage--phone-open .journal-mobile-page,
   .journal-mobile-stage--phone-closing .journal-mobile-page {
       min-height: 0;
