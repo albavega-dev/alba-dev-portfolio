@@ -6,8 +6,7 @@ import { useLanguage } from '../../i18n/useLanguage'
 
 function CV() {
   const { translations } = useLanguage()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cv = translations.cv as any
+  const cv = translations.cv
   return (
     <PageContainer>
       <main className="cv-page">

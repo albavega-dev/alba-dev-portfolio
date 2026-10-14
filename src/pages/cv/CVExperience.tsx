@@ -30,8 +30,7 @@ const cardVariant = (index: number) => index % 2 === 0 ? 'pink' : 'lavender'
 
 function CVExperience() {
   const { translations } = useLanguage()
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const cv = translations.cv as any
+  const cv = translations.cv
   return (
     <section className="cv-experience" aria-labelledby="experience-title">
       <h2 id="experience-title">{cv.timeline.title}</h2>

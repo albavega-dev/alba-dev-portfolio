@@ -1,4 +1,73 @@
 export type Language = 'en' | 'es';
+
+type CVHeroTranslations = {
+  kicker: string;
+  title: string;
+  intro: string;
+  roleLabel: string;
+  roleValue: string;
+  experienceLabel: string;
+  experienceValue: string;
+  languageLabel: string;
+  languageValue: string;
+  institution: string;
+  downloadsLabel: string;
+};
+
+type CVBankingTranslations = {
+  date: string;
+  title: string;
+  role: string;
+  description?: string;
+  highlights: string[];
+};
+
+type CVEnergyTranslations = {
+  date: string;
+  title: string;
+  role: string;
+  description: string;
+  highlights?: string[];
+};
+
+type CVEducationEntryTranslations = {
+  date: string;
+  title: string;
+  institution: string;
+};
+
+type CVPersonalProjectTranslations = {
+  date: string;
+  title: string;
+  context: string;
+  description: string;
+  note?: string;
+  highlights?: string[];
+};
+
+type CVTimelineTranslations = {
+  title: string;
+  employerLabel: string;
+  employerDate: string;
+  studiesLabel: string;
+  educationTitle: string;
+  earlyLabel: string;
+  earlyTitle: string;
+  linkLabel: string;
+  banking: CVBankingTranslations;
+  energy: CVEnergyTranslations;
+  education: {
+    dam: CVEducationEntryTranslations;
+    android: CVEducationEntryTranslations;
+  };
+  jamones: CVPersonalProjectTranslations & {
+    note: string;
+  };
+  tinta: CVPersonalProjectTranslations & {
+    highlights: string[];
+  };
+};
+
 export type TranslationResources = {
   navbar: {
     about: string;
@@ -131,7 +200,7 @@ export type TranslationResources = {
     };
   };
   cv: {
-    hero: Record<string, string>;
-    timeline: Record<string, unknown>;
+    hero: CVHeroTranslations;
+    timeline: CVTimelineTranslations;
   };
 };
