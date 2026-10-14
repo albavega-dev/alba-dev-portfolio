@@ -8,7 +8,7 @@ function CV() {
   const { translations } = useLanguage()
   const cv = translations.cv
   return (
-    <PageContainer>
+    <PageContainer className="cv-page-container">
       <main className="cv-page">
         <section className="cv-hero">
           <header className="cv-header">
