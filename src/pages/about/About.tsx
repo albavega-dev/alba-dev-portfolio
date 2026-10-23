@@ -1,4 +1,5 @@
 
+import { IconBrandOpenai } from '@tabler/icons-react'
 import PageContainer from '../../components/layout/PageContainer'
 import SkillIcon from '../../components/ui/SkillIcon'
 import BeyondTheCode from '../../components/about/BeyondTheCode'
@@ -280,6 +281,11 @@ function About() {
                     name="devin"
                     label="Devin"
                     iconUrl="/images/skills/devin.svg"
+                  />
+                  <SkillIcon
+                    name="openai"
+                    label="Codex"
+                    icon={<IconBrandOpenai size={48} stroke={1.7} aria-hidden="true" className="h-12 w-12 text-[var(--color-purple)]" />}
                   />
                 </div>
               </div>
