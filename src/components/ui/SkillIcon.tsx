@@ -1,12 +1,15 @@
 
+import type { ReactNode } from 'react'
+
 type SkillIconProps = {
   name: string
   label: string
   iconUrl?: string
+  icon?: ReactNode
   hoverEffect?: 'underline' | 'circle' | 'circle-label' | 'circle-label-compact'
 }
 
-function SkillIcon({ name, label, iconUrl, hoverEffect = 'circle-label-compact' }: SkillIconProps) {
+function SkillIcon({ name, label, iconUrl, icon, hoverEffect = 'circle-label-compact' }: SkillIconProps) {
   const iconSource = iconUrl ?? `https://skillicons.dev/icons?i=${name}`
   const includesLabel = hoverEffect === 'circle-label' || hoverEffect === 'circle-label-compact'
 
@@ -19,11 +22,7 @@ function SkillIcon({ name, label, iconUrl, hoverEffect = 'circle-label-compact' 
             : ''
         }`}
       >
-        <img
-          src={iconSource}
-          alt={label}
-          className="h-12 w-12 object-contain"
-        />
+        {icon ?? <img src={iconSource} alt={label} className="h-12 w-12 object-contain" />}
         {hoverEffect === 'circle' && (
           <svg
             aria-hidden="true"

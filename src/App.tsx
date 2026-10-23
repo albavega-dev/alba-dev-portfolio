@@ -7,6 +7,7 @@ import ScrollToTop from './components/layout/ScrollToTop'
 import About from './pages/about/About'
 import CV from './pages/cv/CV'
 import Home from './pages/home/Home'
+import Projects from './pages/projects/Projects'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/cv" element={<CV />} />
+        <Route path="/projects" element={<Projects />} />
       </Routes>
 
       <Footer />
