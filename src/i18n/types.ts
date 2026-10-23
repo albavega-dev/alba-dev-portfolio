@@ -72,6 +72,7 @@ export type TranslationResources = {
   navbar: {
     about: string;
     cv: string;
+    projects: string;
     languageLabel: string;
     english: string;
     spanish: string;
@@ -205,5 +206,12 @@ export type TranslationResources = {
   cv: {
     hero: CVHeroTranslations;
     timeline: CVTimelineTranslations;
+  };
+  projects: {
+    heading: string;
+    status: string;
+    description: string;
+    technologiesLabel: string;
+    imageAlt: string;
   };
 };

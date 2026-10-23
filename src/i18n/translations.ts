@@ -6,6 +6,7 @@ const english: TranslationResources = {
   navbar: {
     about: 'About Me',
     cv: 'CV',
+    projects: 'Projects',
     languageLabel: 'Language',
     english: 'English',
     spanish: 'Spanish',
@@ -20,6 +21,13 @@ const english: TranslationResources = {
     description: 'I build thoughtful web experiences where clean engineering meets expressive design.',
     roleDescriptors: 'frontend · full-stack ·',
     editorialLabel: 'CREATIVE',
+  },
+  projects: {
+    heading: 'Personal Projects',
+    status: 'Beta',
+    description: 'A Spanish-language hub for resources related to the videogame Arknights.',
+    technologiesLabel: 'Technologies',
+    imageAlt: 'Screenshot of the Arknights Iberia operator catalogue.',
   },
   footer: {
     contactLinks: 'Contact links',
@@ -210,6 +218,7 @@ const spanish: TranslationResources = {
   navbar: {
     about: 'Sobre mí',
     cv: 'CV',
+    projects: 'Proyectos',
     languageLabel: 'Idioma',
     english: 'Inglés',
     spanish: 'Español',
@@ -224,6 +233,13 @@ const spanish: TranslationResources = {
     description: 'Experiencias web con un desarrollo cuidado y un diseño lleno de personalidad.',
     roleDescriptors: 'frontend · full-stack ·',
     editorialLabel: 'CREATIVA',
+  },
+  projects: {
+    heading: 'Proyectos personales',
+    status: 'Beta',
+    description: 'Un espacio en español dedicado a albergar recursos del videojuego Arknights.',
+    technologiesLabel: 'Tecnologías',
+    imageAlt: 'Captura del catálogo de operadores de Arknights Iberia.',
   },
   footer: {
     contactLinks: 'Enlaces de contacto',

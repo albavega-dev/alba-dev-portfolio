@@ -172,6 +172,7 @@ function Navbar() {
 
         <div className="hidden items-center gap-x-6 md:absolute md:left-1/2 md:top-1/2 md:flex md:-translate-x-1/2 md:-translate-y-1/2">
           <AnnotatedNavLink to="/about">{translations.navbar.about}</AnnotatedNavLink>
+          <AnnotatedNavLink to="/projects">{translations.navbar.projects}</AnnotatedNavLink>
           <AnnotatedNavLink to="/cv">{translations.navbar.cv}</AnnotatedNavLink>
         </div>
 
@@ -270,6 +271,7 @@ function Navbar() {
       >
         <div className="flex flex-col gap-3">
           <AnnotatedNavLink to="/about" onClick={() => setIsMenuOpen(false)} mobile mobileOpen={isMenuOpen}>{translations.navbar.about}</AnnotatedNavLink>
+          <AnnotatedNavLink to="/projects" onClick={() => setIsMenuOpen(false)} mobile mobileOpen={isMenuOpen}>{translations.navbar.projects}</AnnotatedNavLink>
           <AnnotatedNavLink to="/cv" onClick={() => setIsMenuOpen(false)} mobile mobileOpen={isMenuOpen}>{translations.navbar.cv}</AnnotatedNavLink>
         </div>
       </div>
